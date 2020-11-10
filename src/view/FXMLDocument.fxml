@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="286.0" prefWidth="553.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.FXMLDocumentController">
+    <children>
+        <Button fx:id="button" layoutX="458.0" layoutY="207.0" onAction="#handleButtonAction" text="Click Me!" />
+        <Label fx:id="label" layoutX="458.0" layoutY="237.0" minHeight="16" minWidth="69" />
+      <Button fx:id="buttonCreateTextbook" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#createTextbook" text="Create Textbook" />
+      <Button fx:id="buttonRead" layoutX="14.0" layoutY="71.0" mnemonicParsing="false" onAction="#readTextbook" text="Read All Textbooks" />
+      <Button fx:id="buttonUpdate" layoutX="14.0" layoutY="176.0" mnemonicParsing="false" onAction="#updateTextbook" text="Update Textbook" />
+      <Button fx:id="buttonDelete" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#deleteTextbook" text="Delete Textbook" />
+      <Button fx:id="buttonReadByClass" layoutX="181.0" layoutY="71.0" mnemonicParsing="false" onAction="#readByClass" text="Find Textbook By Class" />
+      <Button fx:id="buttonReadContaining" layoutX="16.0" layoutY="112.0" mnemonicParsing="false" onAction="#readTitleContaining" text="Find Textbook By Title" />
+    </children>
+</AnchorPane>
