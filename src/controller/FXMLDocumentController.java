@@ -10,11 +10,20 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
@@ -39,6 +48,44 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button buttonDelete;
+
+    @FXML
+    private TextField searchText;
+
+    @FXML
+    private TableView<Textbookmodel> textbookTable;
+
+    @FXML
+    private TableColumn<Textbookmodel, Integer> Isbnnumber;
+
+    @FXML
+    private TableColumn<Textbookmodel, String> textbookname;
+
+    @FXML
+    private TableColumn<Textbookmodel, String> conditionofbook;
+
+    @FXML
+    private TableColumn<Textbookmodel, String> materialtype;
+
+    @FXML
+    private TableColumn<Textbookmodel, String> materialcourse;
+
+    //taken and modified from the Google doc
+    // the observable list of textbooks that is used to insert data into the table
+    private ObservableList<Textbookmodel> textbookData;
+    // add the proper data to the observable list to be rendered in the table
+
+    public void setTableData(List<Textbookmodel> textbookList) {
+        // initialize the textbookData variable
+        textbookData = FXCollections.observableArrayList();
+        // add the textbook objects to an observable list object for use with the GUI table
+        textbookList.forEach(t -> {
+            textbookData.add(t);
+        });
+        // set the the table items to the data in textbookData; refresh the table
+        textbookTable.setItems(textbookData);
+        textbookTable.refresh();
+    }
 
     //Create operation (taken from Google doc)
     @FXML
@@ -285,10 +332,26 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(t.getIsbnnumber() + " " + t.getTextbookname() + " " + t.getConditionofbook() + " " + t.getMaterialtype() + " " + t.getMaterialcourse());
         }
     }
-    
-        @FXML
+
+    @FXML
     void clickSearch(ActionEvent event) {
-            System.out.println("clicked");
+        System.out.println("clicked");
+
+        // getting the name from input box
+        String title = searchText.getText();
+        // calling a db read operaiton, readByName
+        List<Textbookmodel> textbooks = readByTitleContaining(title);
+        if (textbooks == null || textbooks.isEmpty()) {
+            // show an alert to inform user
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog Box");// line 2
+            alert.setHeaderText("The following error occured:");// line 3
+            alert.setContentText("No textbook with that name found");// line 4
+            alert.showAndWait(); // line 5
+        } else {
+            // setting table data
+            setTableData(textbooks);
+        }
     }
 
     // Database manager (code obtained from Google Doc)
@@ -297,8 +360,18 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // loading data from database
-        //database reference: "IntroJavaFXPU"
         manager = (EntityManager) Persistence.createEntityManagerFactory("JonasJasonFXMLPU").createEntityManager();
+
+        //Copied and modified from Google doc
+        // set the cell value factories for the TableView Columns
+        Isbnnumber.setCellValueFactory(new PropertyValueFactory<>("Isbnnumber"));
+        textbookname.setCellValueFactory(new PropertyValueFactory<>("Textbookname"));
+        conditionofbook.setCellValueFactory(new PropertyValueFactory<>("Conditionofbook"));
+        materialtype.setCellValueFactory(new PropertyValueFactory<>("Materialtype"));
+        materialcourse.setCellValueFactory(new PropertyValueFactory<>("Materialcourse"));
+        
+        //eanble row selection
+        textbookTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
 }
