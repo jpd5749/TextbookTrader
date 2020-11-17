@@ -31,15 +31,15 @@
             <Font size="21.0" />
          </font>
       </Text>
-      <TextField layoutX="105.0" layoutY="351.0" prefHeight="31.0" prefWidth="299.0" promptText="Enter book title" />
+      <TextField fx:id="searchText" layoutX="105.0" layoutY="351.0" prefHeight="31.0" prefWidth="299.0" promptText="Enter book title" />
       <Button layoutX="434.0" layoutY="351.0" mnemonicParsing="false" onAction="#clickSearch" text="Search" />
-      <TableView layoutX="17.0" layoutY="406.0" prefHeight="299.0" prefWidth="725.0">
+      <TableView fx:id="textbookTable" layoutX="17.0" layoutY="406.0" prefHeight="299.0" prefWidth="725.0">
         <columns>
-          <TableColumn prefWidth="93.0" text="ISBN" />
-          <TableColumn prefWidth="306.0" text="Title" />
-            <TableColumn prefWidth="124.0" text="Condition" />
-            <TableColumn prefWidth="101.0" text="Type" />
-            <TableColumn prefWidth="100.0" text="Course" />
+          <TableColumn id="Isbnnumber" fx:id="Isbnnumber" prefWidth="124.0" text="ISBN" />
+          <TableColumn id="textbookname" fx:id="textbookname" prefWidth="275.0" text="Title" />
+            <TableColumn fx:id="conditionofbook" prefWidth="124.0" text="Condition" />
+            <TableColumn fx:id="materialtype" prefWidth="101.0" text="Type" />
+            <TableColumn fx:id="materialcourse" prefWidth="100.0" text="Course" />
         </columns>
       </TableView>
     </children>
