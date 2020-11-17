@@ -285,6 +285,11 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(t.getIsbnnumber() + " " + t.getTextbookname() + " " + t.getConditionofbook() + " " + t.getMaterialtype() + " " + t.getMaterialcourse());
         }
     }
+    
+        @FXML
+    void clickSearch(ActionEvent event) {
+            System.out.println("clicked");
+    }
 
     // Database manager (code obtained from Google Doc)
     EntityManager manager;
