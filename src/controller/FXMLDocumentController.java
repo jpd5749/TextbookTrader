@@ -192,6 +192,32 @@ public class FXMLDocumentController implements Initializable {
 
         return textbooks;
     }
+    
+    void readTitleContainingAdvanced(ActionEvent event) {
+        Scanner input = new Scanner(System.in);
+
+        // read input from command line
+        System.out.println("Enter Title:");
+        String titlesearch = input.nextLine();
+
+        List<Textbookmodel> t = readByTitleContainingAdvanced(titlesearch);
+        System.out.println(t.toString());
+    }
+
+    public List<Textbookmodel> readByTitleContainingAdvanced(String textbookname) {
+        Query query = manager.createNamedQuery("Textbookmodel.findByTitleAdvanced");
+
+        // setting query parameter
+        query.setParameter("textbookname", textbookname);
+
+        // execute query
+        List<Textbookmodel> textbooks = query.getResultList();
+        for (Textbookmodel textbook : textbooks) {
+            System.out.println(textbook.getIsbnnumber() + " " + textbook.getTextbookname() + " " + textbook.getConditionofbook() + " " + textbook.getMaterialtype() + " " + textbook.getMaterialcourse());
+        }
+
+        return textbooks;
+    }
 
     public void createTextbook(ActionEvent event) {
         Scanner input = new Scanner(System.in);
@@ -332,6 +358,8 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(t.getIsbnnumber() + " " + t.getTextbookname() + " " + t.getConditionofbook() + " " + t.getMaterialtype() + " " + t.getMaterialcourse());
         }
     }
+    
+    
 
     @FXML
     void clickSearch(ActionEvent event) {
@@ -347,6 +375,25 @@ public class FXMLDocumentController implements Initializable {
             alert.setTitle("Information Dialog Box");// line 2
             alert.setHeaderText("The following error occured:");// line 3
             alert.setContentText("No textbook with that name found");// line 4
+            alert.showAndWait(); // line 5
+        } else {
+            // setting table data
+            setTableData(textbooks);
+        }
+    }
+    
+     @FXML
+    void clickAdvancedSearch(ActionEvent event) {
+        // getting the name from input box
+        String title = searchText.getText();
+        // calling a db read operaiton, readByName
+        List<Textbookmodel> textbooks = readByTitleContainingAdvanced(title);
+        if (textbooks == null || textbooks.isEmpty()) {
+            // show an alert to inform user
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog Box");// line 2
+            alert.setHeaderText("The following error occured:");// line 3
+            alert.setContentText("No textbooks matching that query were found");// line 4
             alert.showAndWait(); // line 5
         } else {
             // setting table data
