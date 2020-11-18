@@ -42,5 +42,6 @@
             <TableColumn fx:id="materialcourse" prefWidth="100.0" text="Course" />
         </columns>
       </TableView>
+      <Button layoutX="517.0" layoutY="351.0" mnemonicParsing="false" onAction="#clickAdvancedSearch" text="Advanced Search" />
     </children>
 </AnchorPane>
