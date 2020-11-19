@@ -34,15 +34,10 @@ public class DetailedModelViewController {
     @FXML
     private ImageView bookCoverImage;
 
-    @FXML
-    void clickBack(ActionEvent event) {
-
-    }
-
     //Taken and reformatted from Google doc
     // going back to previous scene    
     @FXML
-    void backButtonAction(ActionEvent event) {
+    void clickBack(ActionEvent event) {
         // option 1: get current stage -- from event
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
