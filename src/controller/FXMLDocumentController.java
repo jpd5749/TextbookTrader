@@ -40,7 +40,7 @@ import javax.persistence.Query;
  */
 public class FXMLDocumentController implements Initializable {
 
-@FXML // ResourceBundle that was given to the FXMLLoader
+    @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
@@ -69,7 +69,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML // fx:id="materialUser"
     private TableColumn<Textbookmodel, String> materialUser; // Value injected by FXMLLoader
-
 
     //taken and modified from the Google doc
     // the observable list of textbooks that is used to insert data into the table
@@ -117,9 +116,7 @@ public class FXMLDocumentController implements Initializable {
 //
 //        return textbooks;
 //    }
-    
-    
-   
+
     @FXML
     void clickTitleSearch(ActionEvent event) {
         // getting the name from input box
@@ -138,8 +135,7 @@ public class FXMLDocumentController implements Initializable {
             setTableData(textbooks);
         }
     }
-    
-    
+
     @FXML
     void clickUserSearch(ActionEvent event) {
         System.out.println("Not Supported Yet.");
@@ -159,13 +155,34 @@ public class FXMLDocumentController implements Initializable {
 //            setTableData(textbooks);
 //        }
     }
-    
-        @FXML
-    void clickLogin(ActionEvent event) {
-            System.out.println("Not supported yet either.");
+
+    @FXML
+    void clickLogin(ActionEvent event) throws IOException {
+        System.out.println("Not supported yet either.");
+
+        // fxml loader
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginFrameView.fxml"));
+
+        // load the ui elements
+        Parent loginFrameView = loader.load();
+
+        // load the scene
+        Scene tableViewScene = new Scene(loginFrameView);
+
+        //access the detailedControlled and call a method
+        LoginFrameViewController loginController = loader.getController();
+
+        // pass current scene to return
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        loginController.setPreviousScene(currentScene);
+
+        //This line gets the Stage information
+        Stage stage = (Stage) currentScene.getWindow();
+
+        stage.setScene(tableViewScene);
+        stage.show();
     }
-    
-    
+
     //Show details
     @FXML
     void showDetailsInPlace(ActionEvent event) throws IOException {
@@ -173,7 +190,6 @@ public class FXMLDocumentController implements Initializable {
         // pass currently selected model
         Textbookmodel selectedTextbook = textbookTable.getSelectionModel().getSelectedItem();
 
-        
         // fxml loader
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
 
@@ -185,7 +201,6 @@ public class FXMLDocumentController implements Initializable {
 
         //access the detailedControlled and call a method
         DetailedModelViewController detailedControlled = loader.getController();
-
 
         detailedControlled.initData(selectedTextbook);
 
@@ -214,7 +229,7 @@ public class FXMLDocumentController implements Initializable {
         materialCondition.setCellValueFactory(new PropertyValueFactory<>("Conditionofbook"));
         materialType.setCellValueFactory(new PropertyValueFactory<>("Materialtype"));
         materialCourse.setCellValueFactory(new PropertyValueFactory<>("Materialcourse"));
-        
+
         //eanble row selection
         textbookTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }

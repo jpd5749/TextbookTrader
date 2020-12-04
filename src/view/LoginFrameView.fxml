@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane prefHeight="114.0" prefWidth="600.0">
@@ -43,7 +42,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Hyperlink text="Sign up &gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Hyperlink fx:id="signupButton" text="Sign up &gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
@@ -61,14 +60,14 @@
           <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="9.0" prefWidth="546.0" text="Email Address" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
-            <TextField layoutX="210.0" layoutY="10.0" prefHeight="14.0" prefWidth="546.0" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="emailField" prefHeight="9.0" prefWidth="546.0" text="Email Address" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+            <TextField fx:id="passwordField" layoutX="210.0" layoutY="10.0" prefHeight="14.0" prefWidth="546.0" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Hyperlink alignment="CENTER_RIGHT" text="show" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <AnchorPane prefHeight="103.0" prefWidth="600.0">
          <children>
-            <Button layoutX="220.0" layoutY="29.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Sign in">
+            <Button fx:id="signinButton" layoutX="220.0" layoutY="29.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Sign in">
                <font>
                   <Font size="18.0" />
                </font>
