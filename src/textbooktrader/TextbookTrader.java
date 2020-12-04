@@ -19,7 +19,7 @@ public class TextbookTrader extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/HomeView.fxml"));
         
         Scene scene = new Scene(root);
         

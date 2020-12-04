@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Textbookmodel.findByTitleAdvanced", query = "SELECT t FROM Textbookmodel t WHERE LOWER(t.textbookname) like CONCAT('%', LOWER(:textbookname), '%')")
     , @NamedQuery(name = "Textbookmodel.findByConditionofbook", query = "SELECT t FROM Textbookmodel t WHERE t.conditionofbook = :conditionofbook")
     , @NamedQuery(name = "Textbookmodel.findByMaterialtype", query = "SELECT t FROM Textbookmodel t WHERE t.materialtype = :materialtype")
-    , @NamedQuery(name = "Textbookmodel.findByMaterialcourse", query = "SELECT t FROM Textbookmodel t WHERE t.materialcourse = :materialcourse")})
+    , @NamedQuery(name = "Textbookmodel.findByMaterialcourse", query = "SELECT t FROM Textbookmodel t WHERE t.materialcourse = :materialcourse")
+    })
 
 public class Textbookmodel implements Serializable {
 
