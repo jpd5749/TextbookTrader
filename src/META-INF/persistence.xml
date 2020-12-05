@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>model.Textbook</class>
     <class>model.Textbookmodel</class>
+    <class>model.Accounts</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/gp6_db"/>
       <property name="javax.persistence.jdbc.user" value="APP"/>

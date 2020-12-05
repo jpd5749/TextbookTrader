@@ -61,8 +61,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField text="First Name" GridPane.columnIndex="1" />
-            <TextField layoutX="10.0" layoutY="27.0" prefHeight="31.0" prefWidth="275.0" text="Last Name" GridPane.columnIndex="3" />
+            <TextField fx:id="firstNameField" text="First Name" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameField" layoutX="10.0" layoutY="27.0" prefHeight="31.0" prefWidth="275.0" text="Last Name" GridPane.columnIndex="3" />
          </children>
       </GridPane>
       <GridPane>
@@ -77,14 +77,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField text="Email Address" GridPane.columnIndex="1" />
-            <TextField layoutX="210.0" layoutY="10.0" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="emailField" text="Email Address" GridPane.columnIndex="1" />
+            <TextField fx:id="passwordField" layoutX="210.0" layoutY="10.0" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Hyperlink alignment="CENTER_RIGHT" text="show" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <AnchorPane prefHeight="103.0" prefWidth="600.0">
          <children>
-            <Button layoutX="220.0" layoutY="29.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Create Account">
+            <Button layoutX="220.0" layoutY="29.0" mnemonicParsing="false" onAction="#clickCreate" prefHeight="45.0" prefWidth="161.0" text="Create Account">
                <font>
                   <Font size="18.0" />
                </font>

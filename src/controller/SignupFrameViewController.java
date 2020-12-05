@@ -13,6 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import model.Accounts;
 
 public class SignupFrameViewController {
 
@@ -68,7 +71,60 @@ public class SignupFrameViewController {
     }
 
     @FXML
+    void clickCreate(ActionEvent event) {
+
+        // read input from text fields
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
+        String email = emailField.getText();
+        String password = passwordField.getText();
+
+        // create a user instance
+        Accounts user = new Accounts();
+
+        // set properties
+        user.setFirstname(firstName);
+        user.setLastname(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        // save this account to database by calling Create operation        
+        create(user);
+    }
+
+    @FXML
+    public void create(Accounts user) {
+
+        // Create operation
+        try {
+            // begin transaction
+            manager.getTransaction().begin();
+
+            // sanity check
+            if (user.getEmail()!= null) {
+
+                // create account
+                manager.persist(user);
+
+                // end transaction
+                manager.getTransaction().commit();
+
+                System.out.println(user.toString() + " is created");
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    // Database manager
+    EntityManager manager;
+
+    @FXML
     void initialize() {
+
+        // loading data from database
+        manager = (EntityManager) Persistence.createEntityManagerFactory("JonasJasonFXMLPU").createEntityManager();
+
         assert signInButton != null : "fx:id=\"signInButton\" was not injected: check your FXML file 'SignupFrameView.fxml'.";
         assert firstNameField != null : "fx:id=\"firstNameField\" was not injected: check your FXML file 'SignupFrameView.fxml'.";
         assert lastNameField != null : "fx:id=\"lastNameField\" was not injected: check your FXML file 'SignupFrameView.fxml'.";
