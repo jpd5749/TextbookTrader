@@ -167,19 +167,19 @@ public class FXMLDocumentController implements Initializable {
         Parent loginFrameView = loader.load();
 
         // load the scene
-        Scene tableViewScene = new Scene(loginFrameView);
+        Scene loginViewScene = new Scene(loginFrameView);
 
         //access the detailedControlled and call a method
         LoginFrameViewController loginController = loader.getController();
 
         // pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
-        loginController.setPreviousScene(currentScene);
+        //loginController.setPreviousScene(currentScene);
 
         //This line gets the Stage information
         Stage stage = (Stage) currentScene.getWindow();
 
-        stage.setScene(tableViewScene);
+        stage.setScene(loginViewScene);
         stage.show();
     }
 
