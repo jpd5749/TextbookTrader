@@ -33,7 +33,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="Calibri" size="50.0" />
                      </font>
@@ -72,7 +72,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Hyperlink fx:id="signupButton" onAction="#clickSignup" text="Sign up &gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Hyperlink fx:id="signupButton" onAction="#clickSignup" text="Create Account &gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
@@ -96,7 +96,7 @@
       </GridPane>
       <AnchorPane prefHeight="103.0" prefWidth="600.0">
          <children>
-            <Button fx:id="signinButton" layoutX="220.0" layoutY="29.0" mnemonicParsing="false" onAction="#clickSignin" prefHeight="45.0" prefWidth="161.0" text="Sign in">
+            <Button fx:id="signinButton" layoutX="220.0" layoutY="29.0" mnemonicParsing="false" onAction="#clickSignin" prefHeight="45.0" prefWidth="161.0" text="Sign In">
                <font>
                   <Font size="18.0" />
                </font>
