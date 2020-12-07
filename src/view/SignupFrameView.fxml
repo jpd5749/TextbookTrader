@@ -21,11 +21,30 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" GridPane.halignment="CENTER">
-               <font>
-                  <Font name="Calibri" size="50.0" />
-               </font>
-            </Text>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Calibri" size="50.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Button layoutX="14.0" layoutY="-12.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="36.0" prefWidth="77.0" text="Back" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
       <GridPane>
@@ -61,8 +80,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="firstNameField" text="First Name" GridPane.columnIndex="1" />
-            <TextField fx:id="lastNameField" layoutX="10.0" layoutY="27.0" prefHeight="31.0" prefWidth="275.0" text="Last Name" GridPane.columnIndex="3" />
+            <TextField fx:id="firstNameField" promptText="First Name" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameField" layoutX="10.0" layoutY="27.0" prefHeight="31.0" prefWidth="275.0" promptText="Last Name" GridPane.columnIndex="3" />
          </children>
       </GridPane>
       <GridPane>
@@ -77,9 +96,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="emailField" text="Email Address" GridPane.columnIndex="1" />
-            <TextField fx:id="passwordField" layoutX="210.0" layoutY="10.0" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Hyperlink alignment="CENTER_RIGHT" text="show" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <TextField fx:id="emailField" promptText="Email Address" GridPane.columnIndex="1" />
+            <TextField fx:id="passwordField" layoutX="210.0" layoutY="10.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <AnchorPane prefHeight="103.0" prefWidth="600.0">

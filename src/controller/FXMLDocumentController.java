@@ -158,7 +158,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     void clickLogin(ActionEvent event) throws IOException {
-        System.out.println("Not supported yet either.");
 
         // fxml loader
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginFrameView.fxml"));
@@ -174,7 +173,7 @@ public class FXMLDocumentController implements Initializable {
 
         // pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
-        //loginController.setPreviousScene(currentScene);
+        loginController.setPreviousScene(currentScene);
 
         //This line gets the Stage information
         Stage stage = (Stage) currentScene.getWindow();

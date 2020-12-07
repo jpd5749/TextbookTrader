@@ -115,6 +115,12 @@ public class SignupFrameViewController {
             System.out.println(ex.getMessage());
         }
     }
+    
+        @FXML
+    void exitAction(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(previousScene);
+    }
 
     // Database manager
     EntityManager manager;

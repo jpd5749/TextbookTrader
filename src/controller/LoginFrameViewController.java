@@ -56,13 +56,21 @@ public class LoginFrameViewController {
 
         // pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
-        //loginController.setPreviousScene(currentScene);
+        signupController.setPreviousScene(currentScene);
 
         //This line gets the Stage information
         Stage stage = (Stage) currentScene.getWindow();
 
         stage.setScene(signupViewScene);
         stage.show();
+    }
+    
+    
+    @FXML
+    void exitAction(ActionEvent event) {
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(previousScene);
     }
 
     @FXML
