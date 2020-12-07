@@ -13,6 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import model.Accounts;
 
 public class LoginFrameViewController {
 
@@ -64,17 +68,42 @@ public class LoginFrameViewController {
         stage.setScene(signupViewScene);
         stage.show();
     }
+
+    @FXML
+    void clickSignin(ActionEvent event) {
+        String enteredEmail = emailField.getText();
+        String enteredPassword = passwordField.getText();
+
+        Accounts user = findByEmail(enteredEmail);
+        
+        System.out.println(user.getFirstname());
+
+    }
     
-    
+    EntityManager manager;
+
+    public Accounts findByEmail(String email) {
+        Query query = manager.createNamedQuery("Accounts.findByEmail");
+
+        // setting query parameter
+        query.setParameter("email", email);
+
+        // execute query
+        Accounts user = (Accounts) query.getSingleResult();
+        return user;
+    }
+
     @FXML
     void exitAction(ActionEvent event) {
-        
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(previousScene);
     }
 
     @FXML
     void initialize() {
+        manager = (EntityManager) Persistence.createEntityManagerFactory("JonasJasonFXMLPU").createEntityManager();
+        
         assert signupButton != null : "fx:id=\"signupButton\" was not injected: check your FXML file 'LoginFrameView.fxml'.";
         assert emailField != null : "fx:id=\"emailField\" was not injected: check your FXML file 'LoginFrameView.fxml'.";
         assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'LoginFrameView.fxml'.";

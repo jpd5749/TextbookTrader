@@ -96,7 +96,7 @@
       </GridPane>
       <AnchorPane prefHeight="103.0" prefWidth="600.0">
          <children>
-            <Button fx:id="signinButton" layoutX="220.0" layoutY="29.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Sign in">
+            <Button fx:id="signinButton" layoutX="220.0" layoutY="29.0" mnemonicParsing="false" onAction="#clickSignin" prefHeight="45.0" prefWidth="161.0" text="Sign in">
                <font>
                   <Font size="18.0" />
                </font>
