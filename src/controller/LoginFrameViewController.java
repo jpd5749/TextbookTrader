@@ -76,7 +76,15 @@ public class LoginFrameViewController {
 
         Accounts user = findByEmail(enteredEmail);
         
-        System.out.println(user.getFirstname());
+        if (user.getPassword().equals(enteredPassword)) {
+            System.out.println("Welcome back, " + user.getFirstname() + "!");
+        }
+        
+        else {
+            System.out.println("Wrong password!");
+        }
+        
+        
 
     }
     
