@@ -52,7 +52,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML // fx:id="searchText"
     private TextField searchText; // Value injected by FXMLLoader
 
-    @FXML // fx:id="textbookTable"
+    @FXML // fx:id="postTable"
     private TableView<Posts> postTable; // Value injected by FXMLLoader
 
     @FXML // fx:id="materialName"
@@ -76,13 +76,13 @@ public class FXMLDocumentController implements Initializable {
     // add the proper data to the observable list to be rendered in the table
 
     public void setTableData(List<Posts> postList) {
-        // initialize the textbookData variable
+
         postData = FXCollections.observableArrayList();
-        // add the textbook objects to an observable list object for use with the GUI table
-        postList.forEach(t -> {
-            postData.add(t);
+
+        postList.forEach(p -> {
+            postData.add(p);
         });
-        // set the the table items to the data in textbookData; refresh the table
+
         postTable.setItems(postData);
         postTable.refresh();
     }
@@ -98,18 +98,6 @@ public class FXMLDocumentController implements Initializable {
 
         return posts;
     }
-    
-    private List<Posts> readByUserContainingAdvanced(String user) {
-        Query query = manager.createNamedQuery("Posts.findByUseridAdvanced");
-
-        // setting query parameter
-        query.setParameter("userid", user);
-
-        // execute query
-        List<Posts> posts = query.getResultList();
-
-        return posts;
-    }
 
     @FXML
     void clickTitleSearch(ActionEvent event) {
@@ -117,25 +105,6 @@ public class FXMLDocumentController implements Initializable {
         String title = searchText.getText();
         // calling a db read operaiton, readByName
         List<Posts> posts = readByTitleContainingAdvanced(title);
-        if (posts == null || posts.isEmpty()) {
-            // show an alert to inform user
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Information Dialog Box");// line 2
-            alert.setHeaderText("The following error occured:");// line 3
-            alert.setContentText("No posts matching that query were found");// line 4
-            alert.showAndWait(); // line 5
-        } else {
-            // setting table data
-            setTableData(posts);
-        }
-    }
-
-    @FXML
-    void clickUserSearch(ActionEvent event) {
-        // getting the name from input box
-        String user = searchText.getText();
-        // calling a db read operaiton, readByName
-        List<Posts> posts = readByUserContainingAdvanced(user);
         if (posts == null || posts.isEmpty()) {
             // show an alert to inform user
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -218,11 +187,11 @@ public class FXMLDocumentController implements Initializable {
 
         //Copied and modified from Google doc
         // set the cell value factories for the TableView Columns
-        materialName.setCellValueFactory(new PropertyValueFactory<>("materialName"));
-        materialCondition.setCellValueFactory(new PropertyValueFactory<>("materialCondition"));
-        materialType.setCellValueFactory(new PropertyValueFactory<>("materialType"));
-        materialCourse.setCellValueFactory(new PropertyValueFactory<>("materialCourse"));
-        materialUser.setCellValueFactory(new PropertyValueFactory<>("materialUser"));
+        materialName.setCellValueFactory(new PropertyValueFactory<>("title"));
+        materialCondition.setCellValueFactory(new PropertyValueFactory<>("condition"));
+        materialType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        materialCourse.setCellValueFactory(new PropertyValueFactory<>("course"));
+        materialUser.setCellValueFactory(new PropertyValueFactory<>("userid"));
         
         postTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }

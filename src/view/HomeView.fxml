@@ -20,8 +20,8 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="searchText" layoutX="17.0" layoutY="152.0" prefHeight="31.0" prefWidth="486.0" promptText="Enter Search Text" />
-      <TableView fx:id="textbookTable" layoutX="17.0" layoutY="207.0" prefHeight="498.0" prefWidth="725.0">
+      <TextField fx:id="searchText" layoutX="17.0" layoutY="152.0" prefHeight="31.0" prefWidth="597.0" promptText="Enter Search Text" />
+      <TableView fx:id="postTable" layoutX="17.0" layoutY="207.0" prefHeight="498.0" prefWidth="725.0">
         <columns>
           <TableColumn id="textbookname" fx:id="materialName" prefWidth="275.0" text="Post Title" />
             <TableColumn fx:id="materialCondition" prefWidth="124.0" text="Condition" />
@@ -30,7 +30,7 @@
             <TableColumn fx:id="materialUser" prefWidth="124.0" text="User" />
         </columns>
       </TableView>
-      <Button layoutX="520.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickTitleSearch" prefHeight="31.0" prefWidth="100.0" text="Search By Title" />
+      <Button layoutX="635.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickTitleSearch" prefHeight="31.0" prefWidth="100.0" text="Search" />
       <Button layoutX="614.0" layoutY="713.0" mnemonicParsing="false" onAction="#showDetailsInPlace" prefHeight="36.0" prefWidth="128.0" text="View Selected Post" />
       <ImageView fitHeight="105.0" fitWidth="267.0" layoutX="245.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
          <cursor>
@@ -40,7 +40,6 @@
             <Image url="@Logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="635.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickUserSearch" prefHeight="31.0" prefWidth="100.0" text="Search By User" />
       <Button layoutX="635.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickLogin" prefHeight="44.0" prefWidth="100.0" text="Login / Sign up" />
     </children>
 </AnchorPane>

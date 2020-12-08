@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Posts.findAll", query = "SELECT p FROM Posts p")
     , @NamedQuery(name = "Posts.findById", query = "SELECT p FROM Posts p WHERE p.id = :id")
     , @NamedQuery(name = "Posts.findByTitle", query = "SELECT p FROM Posts p WHERE p.title = :title")
-    , @NamedQuery(name = "Posts.findByTitleAdvanced", query = "SELECT p FROM Posts p WHERE LOWER(p.title) like CONCAT('%', LOWER(:title), '%')")
+    , @NamedQuery(name = "Posts.findByTitleAdvanced", query = "SELECT p FROM Posts p WHERE  LOWER(p.title) LIKE  CONCAT('%', LOWER(:title), '%')")
     , @NamedQuery(name = "Posts.findByCondition", query = "SELECT p FROM Posts p WHERE p.condition = :condition")
     , @NamedQuery(name = "Posts.findByType", query = "SELECT p FROM Posts p WHERE p.type = :type")
     , @NamedQuery(name = "Posts.findByCourse", query = "SELECT p FROM Posts p WHERE p.course = :course")
