@@ -15,7 +15,7 @@
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#clickBack" text="Back" />
             <BorderPane prefHeight="372.0" prefWidth="600.0">
                <top>
-                  <Text fx:id="bookTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Title" BorderPane.alignment="CENTER">
+                  <Text fx:id="postTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Post Title" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -24,32 +24,22 @@
                <left>
                   <AnchorPane prefHeight="329.0" prefWidth="211.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Text layoutX="33.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="bookISBN" layoutX="117.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
                         <Text layoutX="34.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Condition:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Text fx:id="bookCondition" layoutX="158.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                        <Text fx:id="postCondition" layoutX="158.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Text layoutX="33.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Material:">
+                        <Text layoutX="33.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Text fx:id="bookMaterial" layoutX="143.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                        <Text fx:id="postMaterial" layoutX="143.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -59,7 +49,17 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Text fx:id="bookCourse" layoutX="143.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                        <Text fx:id="postCourse" layoutX="143.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="33.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="postUser" layoutX="143.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
                               <Font size="24.0" />
                            </font>

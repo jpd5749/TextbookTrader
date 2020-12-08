@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import model.Accounts;
+import model.Users;
 
 public class LoginFrameViewController {
 
@@ -74,7 +74,7 @@ public class LoginFrameViewController {
         String enteredEmail = emailField.getText();
         String enteredPassword = passwordField.getText();
 
-        Accounts user = findByEmail(enteredEmail);
+        Users user = findByEmail(enteredEmail);
         
         if (user.getPassword().equals(enteredPassword)) {
             System.out.println("Welcome back, " + user.getFirstname() + "!");
@@ -90,14 +90,14 @@ public class LoginFrameViewController {
     
     EntityManager manager;
 
-    public Accounts findByEmail(String email) {
+    public Users findByEmail(String email) {
         Query query = manager.createNamedQuery("Accounts.findByEmail");
 
         // setting query parameter
         query.setParameter("email", email);
 
         // execute query
-        Accounts user = (Accounts) query.getSingleResult();
+        Users user = (Users) query.getSingleResult();
         return user;
     }
 

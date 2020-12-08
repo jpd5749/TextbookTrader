@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import model.Accounts;
+import model.Users;
 
 public class SignupFrameViewController {
 
@@ -80,7 +80,7 @@ public class SignupFrameViewController {
         String password = passwordField.getText();
 
         // create a user instance
-        Accounts user = new Accounts();
+        Users user = new Users();
 
         // set properties
         user.setFirstname(firstName);
@@ -93,7 +93,7 @@ public class SignupFrameViewController {
     }
 
     @FXML
-    public void create(Accounts user) {
+    public void create(Users user) {
 
         // Create operation
         try {

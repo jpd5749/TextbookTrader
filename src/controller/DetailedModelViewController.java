@@ -1,5 +1,6 @@
 package controller;
 
+import static java.lang.String.valueOf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,27 +10,29 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Textbookmodel;
+import model.Posts;
+import model.Users;
 
 public class DetailedModelViewController {
 
     @FXML
     private Button backButton;
     
-    @FXML
-    private Text bookTitle;
+    @FXML // fx:id="bookTitle"
+    private Text postTitle; // Value injected by FXMLLoader
 
-    @FXML
-    private Text bookISBN;
+    @FXML // fx:id="postCondition"
+    private Text postCondition; // Value injected by FXMLLoader
 
-    @FXML
-    private Text bookCondition;
+    @FXML // fx:id="postMaterial"
+    private Text postMaterial; // Value injected by FXMLLoader
 
-    @FXML
-    private Text bookMaterial;
+    @FXML // fx:id="postCourse"
+    private Text postCourse; // Value injected by FXMLLoader
 
-    @FXML
-    private Text bookCourse;
+    @FXML // fx:id="postUser"
+    private Text postUser; // Value injected by FXMLLoader
+
 
     @FXML
     private ImageView bookCoverImage;
@@ -49,7 +52,7 @@ public class DetailedModelViewController {
 
     }
 
-    Textbookmodel selectedModel;
+    Posts selectedModel;
     Scene previousScene;
 
     public void setPreviousScene(Scene scene) {
@@ -58,17 +61,17 @@ public class DetailedModelViewController {
 
     }
 
-    public void initData(Textbookmodel model) {
-        selectedModel = model;
-        bookTitle.setText(model.getTextbookname());
-        bookISBN.setText(model.getIsbnnumber().toString());
-        bookCondition.setText(model.getConditionofbook());
-        bookMaterial.setText(model.getMaterialtype());
-        bookCourse.setText(model.getMaterialcourse());
+    public void initData(Posts postModel) {
+        selectedModel = postModel;
+        postTitle.setText(postModel.getTitle());
+        postCondition.setText(postModel.getCondition());
+        postMaterial.setText(postModel.getType());
+        postCourse.setText(postModel.getCourse());
+        postUser.setText(valueOf(postModel.getUserid()));
 
         try {
             // path points to /resource/images/
-            String imagename = "/resource/images/" + model.getIsbnnumber().toString() + ".jpg";
+            String imagename = "/resource/images/" + postModel.getId().toString() + ".jpg";
             Image cover = new Image(getClass().getResourceAsStream(imagename));
             bookCoverImage.setImage(cover);
 
@@ -80,11 +83,10 @@ public class DetailedModelViewController {
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
-        assert bookTitle != null : "fx:id=\"bookTitle\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
-        assert bookISBN != null : "fx:id=\"bookISBN\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
-        assert bookCondition != null : "fx:id=\"bookCondition\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
-        assert bookMaterial != null : "fx:id=\"bookMaterial\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
-        assert bookCourse != null : "fx:id=\"bookCourse\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
+        assert postTitle != null : "fx:id=\"bookTitle\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
+        assert postCondition != null : "fx:id=\"bookCondition\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
+        assert postMaterial != null : "fx:id=\"bookMaterial\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
+        assert postCourse != null : "fx:id=\"bookCourse\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
         assert bookCoverImage != null : "fx:id=\"bookCoverImage\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
 
         backButton.setDisable(true);
