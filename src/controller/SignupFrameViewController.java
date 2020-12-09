@@ -11,10 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import model.Users;
 
 public class SignupFrameViewController {
@@ -38,7 +40,7 @@ public class SignupFrameViewController {
     private TextField emailField;
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
     @FXML
     private Button createAccountButton;
@@ -74,15 +76,22 @@ public class SignupFrameViewController {
     void clickCreate(ActionEvent event) {
 
         // read input from text fields
+        int id = 0;
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
+        
+        // call named query to determine the highest user id in the table
+        Query query = manager.createNamedQuery("Users.findNewestUser");
+        // set id to be the highest user id + 1
+        id = (int) query.getSingleResult() + 1;
 
         // create a user instance
         Users user = new Users();
 
         // set properties
+        user.setId(id);
         user.setFirstname(firstName);
         user.setLastname(lastName);
         user.setEmail(email);
@@ -101,7 +110,7 @@ public class SignupFrameViewController {
             manager.getTransaction().begin();
 
             // sanity check
-            if (user.getEmail()!= null) {
+            if (user.getEmail()!= null && user.getFirstname()!= null && user.getLastname()!= null && user.getPassword()!= null) {
 
                 // create account
                 manager.persist(user);

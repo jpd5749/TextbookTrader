@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -84,7 +85,7 @@
         </rowConstraints>
          <children>
             <TextField fx:id="emailField" promptText="Email Address" GridPane.columnIndex="1" />
-            <TextField fx:id="passwordField" layoutX="210.0" layoutY="10.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="passwordField" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <AnchorPane prefHeight="103.0" prefWidth="600.0">

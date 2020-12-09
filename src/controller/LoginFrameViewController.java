@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
@@ -33,7 +34,7 @@ public class LoginFrameViewController {
     private TextField emailField;
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
     @FXML
     private Button signinButton;
@@ -91,7 +92,7 @@ public class LoginFrameViewController {
     EntityManager manager;
 
     public Users findByEmail(String email) {
-        Query query = manager.createNamedQuery("Accounts.findByEmail");
+        Query query = manager.createNamedQuery("Users.findByEmail");
 
         // setting query parameter
         query.setParameter("email", email);
