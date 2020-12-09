@@ -1,8 +1,11 @@
 package controller;
 
 import static java.lang.String.valueOf;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -81,7 +84,7 @@ public class DetailedModelViewController {
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
+    public void initialize(URL url, ResourceBundle rb) {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
         assert postTitle != null : "fx:id=\"bookTitle\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
         assert postCondition != null : "fx:id=\"bookCondition\" was not injected: check your FXML file 'DetailedModelView.fxml'.";

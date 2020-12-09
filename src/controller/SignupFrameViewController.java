@@ -73,7 +73,7 @@ public class SignupFrameViewController {
     }
 
     @FXML
-    void clickCreate(ActionEvent event) {
+    void clickCreate(ActionEvent event) throws IOException {
 
         // read input from text fields
         int id = 0;
@@ -99,6 +99,31 @@ public class SignupFrameViewController {
 
         // save this account to database by calling Create operation        
         create(user);
+        
+        
+        //do stuff to bring up LoggedInView
+            //code taken and refurbished from Google doc
+
+            // fxml loader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
+
+            // load the ui elements
+            Parent loggedInView = loader.load();
+
+            // load the scene
+            Scene loggedInViewScene = new Scene(loggedInView);
+
+            //access the detailedControlled and call a method
+            LoggedInViewController loggedInControlled = loader.getController();
+
+            loggedInControlled.initialize(user.getId());
+
+            // pass current scene to return
+            Scene currentScene = ((Node) event.getSource()).getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            stage.setScene(loggedInViewScene);
+            stage.show();
     }
 
     @FXML

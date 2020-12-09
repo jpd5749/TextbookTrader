@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
@@ -71,7 +72,7 @@ public class LoginFrameViewController {
     }
 
     @FXML
-    void clickSignin(ActionEvent event) {
+    void clickSignin(ActionEvent event) throws IOException {
         String enteredEmail = emailField.getText();
         String enteredPassword = passwordField.getText();
 
@@ -79,10 +80,39 @@ public class LoginFrameViewController {
         
         if (user.getPassword().equals(enteredPassword)) {
             System.out.println("Welcome back, " + user.getFirstname() + "!");
+            
+            //do stuff to bring up LoggedInView
+            //code taken and refurbished from Google doc
+
+            // fxml loader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
+
+            // load the ui elements
+            Parent loggedInView = loader.load();
+
+            // load the scene
+            Scene loggedInViewScene = new Scene(loggedInView);
+
+            //access the detailedControlled and call a method
+            LoggedInViewController loggedInControlled = loader.getController();
+
+            loggedInControlled.initialize(user.getId());
+
+            // pass current scene to return
+            Scene currentScene = ((Node) event.getSource()).getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            stage.setScene(loggedInViewScene);
+            stage.show();
         }
         
         else {
             System.out.println("Wrong password!");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog Box");// line 2
+            alert.setHeaderText("The following error occured:");// line 3
+            alert.setContentText("The Password is Incorrect.");// line 4
+            alert.showAndWait(); // line 5
         }
         
         

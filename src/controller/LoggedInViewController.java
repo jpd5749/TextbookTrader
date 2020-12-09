@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Sample Skeleton for 'LoggedInView.fxml' Controller Class
  */
+
 package controller;
 
 import java.io.IOException;
-import model.Posts;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,8 +18,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -33,12 +28,9 @@ import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import model.Posts;
 
-/**
- *
- * @author Jonas
- */
-public class FXMLDocumentController implements Initializable {
+public class LoggedInViewController {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -69,24 +61,68 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML // fx:id="materialUser"
     private TableColumn<Posts, Integer> materialUser; // Value injected by FXMLLoader
-
-    //taken and modified from the Google doc
+    
     // the observable list of textbooks that is used to insert data into the table
     private ObservableList<Posts> postData;
-    // add the proper data to the observable list to be rendered in the table
+    
+    // database manager
+    EntityManager manager;
+    
+    //tracks who's logged in
+    int currentUser;
 
-    public void setTableData(List<Posts> postList) {
+    
+    @FXML
+    void clickLogout(ActionEvent event) throws IOException {
+        //show a message to the user for feedback
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog Box");// line 2
+            alert.setHeaderText("Notice:");// line 3
+            alert.setContentText("You are now Logged Out.");// line 4
+            alert.showAndWait(); // line 5
+        //code taken and refurbished from Google doc
+        // fxml loader
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
 
-        postData = FXCollections.observableArrayList();
+        // load the ui elements
+        Parent homeView = loader.load();
 
-        postList.forEach(p -> {
-            postData.add(p);
-        });
+        // load the scene
+        Scene tableViewScene = new Scene(homeView);
 
-        postTable.setItems(postData);
-        postTable.refresh();
+        //access the detailedControlled and call a method
+        //may or may not need to actually do this?
+        HomeViewController homeControlled = loader.getController();
+        homeControlled.initialize();
+        
+        //This line gets the Stage information
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        Stage stage = (Stage) currentScene.getWindow();
+
+        stage.setScene(tableViewScene);
+        stage.show();
+
     }
 
+    @FXML
+    void clickTitleSearch(ActionEvent event) {
+        // getting the name from input box
+        String title = searchText.getText();
+        // calling a db read operaiton, readByName
+        List<Posts> posts = readByTitleContainingAdvanced(title);
+        if (posts == null || posts.isEmpty()) {
+            // show an alert to inform user
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog Box");// line 2
+            alert.setHeaderText("The following error occured:");// line 3
+            alert.setContentText("No posts matching that query were found");// line 4
+            alert.showAndWait(); // line 5
+        } else {
+            // setting table data
+            setTableData(posts);
+        }
+    }
+    
     public List<Posts> readByTitleContainingAdvanced(String postName) {
         Query query = manager.createNamedQuery("Posts.findByTitleAdvanced");
 
@@ -98,50 +134,23 @@ public class FXMLDocumentController implements Initializable {
 
         return posts;
     }
+    
+        public void setTableData(List<Posts> postList) {
 
-    @FXML
-    void clickTitleSearch(ActionEvent event) {
-        // getting the name from input box
-        String title = searchText.getText();
-        // calling a db read operaiton, readByName
-        List<Posts> posts = readByTitleContainingAdvanced(title);
-        if (posts == null || posts.isEmpty()) {
-            // show an alert to inform user
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Information Dialog Box");// line 2
-            alert.setHeaderText("The following error occured:");// line 3
-            alert.setContentText("No posts matching that query were found");// line 4
-            alert.showAndWait(); // line 5
-        } else {
-            // setting table data
-            setTableData(posts);
-        }
+        postData = FXCollections.observableArrayList();
+
+        postList.forEach(p -> {
+            postData.add(p);
+        });
+
+        postTable.setItems(postData);
+        postTable.refresh();
     }
+    
 
     @FXML
-    void clickLogin(ActionEvent event) throws IOException {
-
-        // fxml loader
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginFrameView.fxml"));
-
-        // load the ui elements
-        Parent loginFrameView = loader.load();
-
-        // load the scene
-        Scene loginViewScene = new Scene(loginFrameView);
-
-        //access the detailedControlled and call a method
-        LoginFrameViewController loginController = loader.getController();
-
-        // pass current scene to return
-        Scene currentScene = ((Node) event.getSource()).getScene();
-        loginController.setPreviousScene(currentScene);
-
-        //This line gets the Stage information
-        Stage stage = (Stage) currentScene.getWindow();
-
-        stage.setScene(loginViewScene);
-        stage.show();
+    void createPost(ActionEvent event) {
+        System.out.println("Not Supported Yet.");
     }
 
     //Show details
@@ -176,11 +185,12 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
     }
 
-    // Database manager (code obtained from Google Doc)
-    EntityManager manager;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @FXML // This method is called by the FXMLLoader when initialization is complete
+    public void initialize(int passedUser) {
+        //set the current user to be the passed in user from the log in screen
+        currentUser = passedUser;
+        System.out.println(passedUser);
+        
         // loading data from database
         manager = (EntityManager) Persistence.createEntityManagerFactory("TextbookTraderFXMLPU").createEntityManager();
 
@@ -194,6 +204,10 @@ public class FXMLDocumentController implements Initializable {
         materialUser.setCellValueFactory(new PropertyValueFactory<>("userid"));
         
         postTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    }
+        
+        //show all the data in the table by default
+        List<Posts> posts = readByTitleContainingAdvanced("");
+        setTableData(posts);
 
+    }
 }
