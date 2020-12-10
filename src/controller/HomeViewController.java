@@ -35,6 +35,7 @@ import javax.persistence.Query;
  */
 public class HomeViewController implements Initializable {
 
+    //comment test
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
