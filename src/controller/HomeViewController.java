@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import model.Users;
 
 /**
  *
@@ -64,7 +65,7 @@ public class HomeViewController implements Initializable {
     private TableColumn<Posts, String> materialCourse; // Value injected by FXMLLoader
 
     @FXML // fx:id="materialUser"
-    private TableColumn<Posts, Integer> materialUser; // Value injected by FXMLLoader
+    private TableColumn<Posts, String> materialUser; // Value injected by FXMLLoader
 
     //taken and modified from the Google doc
     // the observable list of textbooks that is used to insert data into the table
@@ -72,6 +73,14 @@ public class HomeViewController implements Initializable {
     // add the proper data to the observable list to be rendered in the table
 
     public void setTableData(List<Posts> postList) {
+
+        for (Posts p : postList) {
+
+            Query query = manager.createNamedQuery("Users.findById");
+            query.setParameter("id", p.getUserid());
+            Users u = (Users) query.getSingleResult();
+            p.setUsername(u.getFirstname() + " " + u.getLastname());
+        }
 
         postData = FXCollections.observableArrayList();
 
@@ -180,27 +189,25 @@ public class HomeViewController implements Initializable {
         // loading data from database
         manager = (EntityManager) Persistence.createEntityManagerFactory("TextbookTraderFXMLPU").createEntityManager();
 
-
         //Copied and modified from Google doc
         // set the cell value factories for the TableView Columns
         materialName.setCellValueFactory(new PropertyValueFactory<>("title"));
         materialCondition.setCellValueFactory(new PropertyValueFactory<>("condition"));
         materialType.setCellValueFactory(new PropertyValueFactory<>("type"));
         materialCourse.setCellValueFactory(new PropertyValueFactory<>("course"));
-        materialUser.setCellValueFactory(new PropertyValueFactory<>("userid"));
-        
+        materialUser.setCellValueFactory(new PropertyValueFactory<>("username"));
+
         postTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        
+
         //show all the data in the table by default
         List<Posts> posts = readByTitleContainingAdvanced("");
         setTableData(posts);
     }
-    
-        //no arguments for when it's called by LoggedInView
-        public void initialize() {
+
+    //no arguments for when it's called by LoggedInView
+    public void initialize() {
         // loading data from database
         manager = (EntityManager) Persistence.createEntityManagerFactory("TextbookTraderFXMLPU").createEntityManager();
-
 
         //Copied and modified from Google doc
         // set the cell value factories for the TableView Columns
@@ -208,10 +215,10 @@ public class HomeViewController implements Initializable {
         materialCondition.setCellValueFactory(new PropertyValueFactory<>("condition"));
         materialType.setCellValueFactory(new PropertyValueFactory<>("type"));
         materialCourse.setCellValueFactory(new PropertyValueFactory<>("course"));
-        materialUser.setCellValueFactory(new PropertyValueFactory<>("userid"));
-        
+        materialUser.setCellValueFactory(new PropertyValueFactory<>("username"));
+
         postTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        
+
         //show all the data in the table by default
         List<Posts> posts = readByTitleContainingAdvanced("");
         setTableData(posts);

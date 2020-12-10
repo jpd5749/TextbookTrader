@@ -26,12 +26,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Posts.findAll", query = "SELECT p FROM Posts p")
     , @NamedQuery(name = "Posts.findById", query = "SELECT p FROM Posts p WHERE p.id = :id")
     , @NamedQuery(name = "Posts.findByTitle", query = "SELECT p FROM Posts p WHERE p.title = :title")
-    , @NamedQuery(name = "Posts.findByTitleAdvanced", query = "SELECT p FROM Posts p WHERE  LOWER(p.title) LIKE  CONCAT('%', LOWER(:title), '%')")
     , @NamedQuery(name = "Posts.findByCondition", query = "SELECT p FROM Posts p WHERE p.condition = :condition")
+    , @NamedQuery(name = "Posts.findByTitleAdvanced", query = "SELECT p FROM Posts p WHERE  LOWER(p.title) LIKE  CONCAT('%', LOWER(:title), '%')")
     , @NamedQuery(name = "Posts.findByType", query = "SELECT p FROM Posts p WHERE p.type = :type")
     , @NamedQuery(name = "Posts.findByCourse", query = "SELECT p FROM Posts p WHERE p.course = :course")
     , @NamedQuery(name = "Posts.findByUserid", query = "SELECT p FROM Posts p WHERE p.userid = :userid")
-})
+    , @NamedQuery(name = "Posts.findByUsername", query = "SELECT p FROM Posts p WHERE p.username = :username")})
 public class Posts implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +53,8 @@ public class Posts implements Serializable {
     @Basic(optional = false)
     @Column(name = "USERID")
     private int userid;
+    @Column(name = "USERNAME")
+    private String username;
 
     public Posts() {
     }
@@ -117,6 +119,14 @@ public class Posts implements Serializable {
         this.userid = userid;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -141,5 +151,5 @@ public class Posts implements Serializable {
     public String toString() {
         return "model.Posts[ id=" + id + " ]";
     }
-    
+
 }

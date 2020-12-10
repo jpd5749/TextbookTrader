@@ -81,7 +81,7 @@ public class SignupFrameViewController {
         String lastName = lastNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
-        
+
         // call named query to determine the highest user id in the table
         Query query = manager.createNamedQuery("Users.findNewestUser");
         // set id to be the highest user id + 1
@@ -99,31 +99,29 @@ public class SignupFrameViewController {
 
         // save this account to database by calling Create operation        
         create(user);
-        
-        
+
         //do stuff to bring up LoggedInView
-            //code taken and refurbished from Google doc
+        //code taken and refurbished from Google doc
+        // fxml loader
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
 
-            // fxml loader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
+        // load the ui elements
+        Parent loggedInView = loader.load();
 
-            // load the ui elements
-            Parent loggedInView = loader.load();
+        // load the scene
+        Scene loggedInViewScene = new Scene(loggedInView);
 
-            // load the scene
-            Scene loggedInViewScene = new Scene(loggedInView);
+        //access the detailedControlled and call a method
+        LoggedInViewController loggedInControlled = loader.getController();
 
-            //access the detailedControlled and call a method
-            LoggedInViewController loggedInControlled = loader.getController();
+        loggedInControlled.initialize(user.getId());
 
-            loggedInControlled.initialize(user.getId());
+        // pass current scene to return
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        Stage stage = (Stage) currentScene.getWindow();
 
-            // pass current scene to return
-            Scene currentScene = ((Node) event.getSource()).getScene();
-            Stage stage = (Stage) currentScene.getWindow();
-
-            stage.setScene(loggedInViewScene);
-            stage.show();
+        stage.setScene(loggedInViewScene);
+        stage.show();
     }
 
     @FXML
@@ -135,7 +133,7 @@ public class SignupFrameViewController {
             manager.getTransaction().begin();
 
             // sanity check
-            if (user.getEmail()!= null && user.getFirstname()!= null && user.getLastname()!= null && user.getPassword()!= null) {
+            if (user.getEmail() != null && user.getFirstname() != null && user.getLastname() != null && user.getPassword() != null) {
 
                 // create account
                 manager.persist(user);
@@ -149,8 +147,8 @@ public class SignupFrameViewController {
             System.out.println(ex.getMessage());
         }
     }
-    
-        @FXML
+
+    @FXML
     void exitAction(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(previousScene);

@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.persistence.Query;
 import model.Posts;
 import model.Users;
 
@@ -20,7 +21,7 @@ public class DetailedModelViewController {
 
     @FXML
     private Button backButton;
-    
+
     @FXML // fx:id="bookTitle"
     private Text postTitle; // Value injected by FXMLLoader
 
@@ -35,7 +36,6 @@ public class DetailedModelViewController {
 
     @FXML // fx:id="postUser"
     private Text postUser; // Value injected by FXMLLoader
-
 
     @FXML
     private ImageView bookCoverImage;
@@ -65,12 +65,13 @@ public class DetailedModelViewController {
     }
 
     public void initData(Posts postModel) {
+
         selectedModel = postModel;
         postTitle.setText(postModel.getTitle());
         postCondition.setText(postModel.getCondition());
         postMaterial.setText(postModel.getType());
         postCourse.setText(postModel.getCourse());
-        postUser.setText(valueOf(postModel.getUserid()));
+        postUser.setText(postModel.getUsername());
 
         try {
             // path points to /resource/images/

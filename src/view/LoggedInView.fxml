@@ -42,5 +42,10 @@
       </ImageView>
       <Button layoutX="635.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickLogout" prefHeight="44.0" prefWidth="100.0" text="Log Out" />
       <Button layoutX="17.0" layoutY="713.0" mnemonicParsing="false" onAction="#createPost" prefHeight="36.0" prefWidth="128.0" text="Create Post" />
+      <Text fx:id="welcomeText" layoutX="235.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back, User" wrappingWidth="288.0000016987324">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'LoggedInView.fxml' Controller Class
  */
-
 package controller;
 
 import java.io.IOException;
@@ -24,11 +23,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Posts;
+import model.Users;
 
 public class LoggedInViewController {
 
@@ -62,24 +63,26 @@ public class LoggedInViewController {
     @FXML // fx:id="materialUser"
     private TableColumn<Posts, Integer> materialUser; // Value injected by FXMLLoader
     
+    @FXML // fx:id="welcomeText"
+    private Text welcomeText; // Value injected by FXMLLoader
+
     // the observable list of textbooks that is used to insert data into the table
     private ObservableList<Posts> postData;
-    
+
     // database manager
     EntityManager manager;
-    
+
     //tracks who's logged in
     int currentUser;
 
-    
     @FXML
     void clickLogout(ActionEvent event) throws IOException {
         //show a message to the user for feedback
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog Box");// line 2
-            alert.setHeaderText("Notice:");// line 3
-            alert.setContentText("You are now Logged Out.");// line 4
-            alert.showAndWait(); // line 5
+        alert.setTitle("Information Dialog Box");// line 2
+        alert.setHeaderText("Notice:");// line 3
+        alert.setContentText("You are now Logged Out.");// line 4
+        alert.showAndWait(); // line 5
         //code taken and refurbished from Google doc
         // fxml loader
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
@@ -94,7 +97,7 @@ public class LoggedInViewController {
         //may or may not need to actually do this?
         HomeViewController homeControlled = loader.getController();
         homeControlled.initialize();
-        
+
         //This line gets the Stage information
         Scene currentScene = ((Node) event.getSource()).getScene();
         Stage stage = (Stage) currentScene.getWindow();
@@ -122,7 +125,7 @@ public class LoggedInViewController {
             setTableData(posts);
         }
     }
-    
+
     public List<Posts> readByTitleContainingAdvanced(String postName) {
         Query query = manager.createNamedQuery("Posts.findByTitleAdvanced");
 
@@ -134,8 +137,16 @@ public class LoggedInViewController {
 
         return posts;
     }
-    
-        public void setTableData(List<Posts> postList) {
+
+    public void setTableData(List<Posts> postList) {
+
+        for (Posts p : postList) {
+
+            Query query = manager.createNamedQuery("Users.findById");
+            query.setParameter("id", p.getUserid());
+            Users u = (Users) query.getSingleResult();
+            p.setUsername(u.getFirstname() + " " + u.getLastname());
+        }
 
         postData = FXCollections.observableArrayList();
 
@@ -146,7 +157,6 @@ public class LoggedInViewController {
         postTable.setItems(postData);
         postTable.refresh();
     }
-    
 
     @FXML
     void createPost(ActionEvent event) {
@@ -190,10 +200,9 @@ public class LoggedInViewController {
         //set the current user to be the passed in user from the log in screen
         currentUser = passedUser;
         System.out.println(passedUser);
-        
+
         // loading data from database
         manager = (EntityManager) Persistence.createEntityManagerFactory("TextbookTraderFXMLPU").createEntityManager();
-
 
         //Copied and modified from Google doc
         // set the cell value factories for the TableView Columns
@@ -201,13 +210,23 @@ public class LoggedInViewController {
         materialCondition.setCellValueFactory(new PropertyValueFactory<>("condition"));
         materialType.setCellValueFactory(new PropertyValueFactory<>("type"));
         materialCourse.setCellValueFactory(new PropertyValueFactory<>("course"));
-        materialUser.setCellValueFactory(new PropertyValueFactory<>("userid"));
-        
+        materialUser.setCellValueFactory(new PropertyValueFactory<>("username"));
+
         postTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        
+
         //show all the data in the table by default
         List<Posts> posts = readByTitleContainingAdvanced("");
         setTableData(posts);
+        
+        //change the welcome text to welcome back the selected user
+        //first, run a query to return the logged in user by searching their ID
+        Query query = manager.createNamedQuery("Users.findById");
+        query.setParameter("id", currentUser);
+        Users u = (Users) query.getSingleResult();
+        
+        //next, change the welcome text to include their name
+        welcomeText.setText("Welcome back, " + u.getFirstname() + " " + u.getLastname());
+
 
     }
 }

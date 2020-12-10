@@ -77,59 +77,70 @@ public class LoginFrameViewController {
         String enteredPassword = passwordField.getText();
 
         Users user = findByEmail(enteredEmail);
-        
-        if (user.getPassword().equals(enteredPassword)) {
-            System.out.println("Welcome back, " + user.getFirstname() + "!");
-            
-            //do stuff to bring up LoggedInView
-            //code taken and refurbished from Google doc
 
-            // fxml loader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
+        if (user != null) {
 
-            // load the ui elements
-            Parent loggedInView = loader.load();
+            if (user.getPassword().equals(enteredPassword)) {
+                System.out.println("Welcome back, " + user.getFirstname() + "!");
 
-            // load the scene
-            Scene loggedInViewScene = new Scene(loggedInView);
+                //do stuff to bring up LoggedInView
+                //code taken and refurbished from Google doc
+                // fxml loader
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
 
-            //access the detailedControlled and call a method
-            LoggedInViewController loggedInControlled = loader.getController();
+                // load the ui elements
+                Parent loggedInView = loader.load();
 
-            loggedInControlled.initialize(user.getId());
+                // load the scene
+                Scene loggedInViewScene = new Scene(loggedInView);
 
-            // pass current scene to return
-            Scene currentScene = ((Node) event.getSource()).getScene();
-            Stage stage = (Stage) currentScene.getWindow();
+                //access the detailedControlled and call a method
+                LoggedInViewController loggedInControlled = loader.getController();
 
-            stage.setScene(loggedInViewScene);
-            stage.show();
-        }
-        
-        else {
-            System.out.println("Wrong password!");
+                loggedInControlled.initialize(user.getId());
+
+                // pass current scene to return
+                Scene currentScene = ((Node) event.getSource()).getScene();
+                Stage stage = (Stage) currentScene.getWindow();
+
+                stage.setScene(loggedInViewScene);
+                stage.show();
+            } else {
+                System.out.println("Wrong password!");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog Box");// line 2
+                alert.setHeaderText("The following error occured:");// line 3
+                alert.setContentText("The Password is Incorrect.");// line 4
+                alert.showAndWait(); // line 5
+            }
+
+        } else {
+            System.out.println("Wrong email!");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog Box");// line 2
             alert.setHeaderText("The following error occured:");// line 3
-            alert.setContentText("The Password is Incorrect.");// line 4
-            alert.showAndWait(); // line 5
+            alert.setContentText("The Email Address is Incorrect.");// line 4
+            alert.showAndWait();
         }
-        
-        
 
     }
-    
+
     EntityManager manager;
 
     public Users findByEmail(String email) {
-        Query query = manager.createNamedQuery("Users.findByEmail");
+        try {
+            Query query = manager.createNamedQuery("Users.findByEmail");
 
-        // setting query parameter
-        query.setParameter("email", email);
+            // setting query parameter
+            query.setParameter("email", email);
 
-        // execute query
-        Users user = (Users) query.getSingleResult();
-        return user;
+            // execute query
+            Users user = (Users) query.getSingleResult();
+            return user;
+        } catch (Exception ex) {
+            return null;
+        }
+
     }
 
     @FXML
@@ -142,7 +153,7 @@ public class LoginFrameViewController {
     @FXML
     void initialize() {
         manager = (EntityManager) Persistence.createEntityManagerFactory("TextbookTraderFXMLPU").createEntityManager();
-        
+
         assert signupButton != null : "fx:id=\"signupButton\" was not injected: check your FXML file 'LoginFrameView.fxml'.";
         assert emailField != null : "fx:id=\"emailField\" was not injected: check your FXML file 'LoginFrameView.fxml'.";
         assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'LoginFrameView.fxml'.";
