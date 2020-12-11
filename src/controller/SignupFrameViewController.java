@@ -91,24 +91,26 @@ public class SignupFrameViewController {
         // create a user instance
         Users user = new Users();
 
-        // set properties
-        user.setId(id);
-        user.setFirstname(firstName);
-        user.setLastname(lastName);
-        user.setEmail(email);
-        user.setPassword(password);
+        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            System.out.println("You may not leave any fields empty!");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog Box");
+            alert.setHeaderText("The following error occured:");
+            alert.setContentText("One or more fields have been left empty");
+            alert.showAndWait();
+        } else {
+            // set properties
+            user.setId(id);
+            user.setFirstname(firstName);
+            user.setLastname(lastName);
+            user.setEmail(email);
+            user.setPassword(password);
+        }
 
-        // save this account to database by calling Create operation        
-        //create(user, stage);
-        //do stuff to bring up LoggedInView
-        //code taken and refurbished from Google doc
         // pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
         Stage stage = (Stage) currentScene.getWindow();
 
-        //stage.setScene(loggedInViewScene);
-        //stage.show();
-        
         // save this account to database by calling Create operation  
         create(user, stage);
     }
@@ -137,7 +139,6 @@ public class SignupFrameViewController {
 
                     System.out.println(user.toString() + " is created");
 
-                    
                     // fxml loader
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
                     // load the ui elements
@@ -153,6 +154,8 @@ public class SignupFrameViewController {
 
                     stage.setScene(loggedInViewScene);
                     stage.show();
+                } else {
+                    System.out.println("One or more values are blank");
                 }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
