@@ -225,7 +225,7 @@ public class LoggedInViewController {
         Users u = (Users) query.getSingleResult();
         
         //next, change the welcome text to include their name
-        welcomeText.setText("Welcome back, " + u.getFirstname() + " " + u.getLastname());
+        welcomeText.setText("Welcome back, " + u.getFirstname());
 
 
     }
