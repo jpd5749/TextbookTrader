@@ -16,19 +16,14 @@ import javafx.scene.control.TextField;
 public class CreatePostController {
     
     @FXML
-    private TextField materialName;
+    private TextField postTitle;
 
     @FXML
-    private TextField courseName;
+    private TextField postCourse;
 
     @FXML
-    private TextField sellerEmail;
+    private TextField postCondition;
 
-    @FXML
-    private TextField materialCondition;
-
-    @FXML
-    private TextField isbnBook;
 
     @FXML
     void backToLogin(ActionEvent event) {

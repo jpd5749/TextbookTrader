@@ -6,19 +6,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="37.0" prefWidth="55.0" text="Back" />
-      <Text layoutX="28.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Post" wrappingWidth="95.521484375">
+      <Text layoutX="230.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Post" wrappingWidth="196.521484375">
          <font>
-            <Font size="18.0" />
+            <Font size="38.0" />
          </font>
       </Text>
-      <TextField fx:id="materialName" layoutX="28.0" layoutY="119.0" promptText="Material name" />
-      <TextField fx:id="courseName" layoutX="28.0" layoutY="165.0" promptText="Course name" />
-      <TextField fx:id="sellerEmail" layoutX="28.0" layoutY="217.0" promptText="Seller email" />
-      <TextField fx:id="materialCondition" layoutX="233.0" layoutY="119.0" promptText="Condition of material" />
-      <TextField fx:id="isbnBook" layoutX="233.0" layoutY="165.0" promptText="ISBN (if available)" />
+      <TextField fx:id="materialName" layoutX="28.0" layoutY="119.0" prefHeight="25.0" prefWidth="403.0" promptText="Post Title" />
+      <TextField fx:id="courseName" layoutX="28.0" layoutY="165.0" prefHeight="25.0" prefWidth="403.0" promptText="Course" />
+      <TextField fx:id="materialCondition" layoutX="28.0" layoutY="215.0" prefHeight="25.0" prefWidth="403.0" promptText="Condition" />
       <Button layoutX="353.0" layoutY="277.0" mnemonicParsing="false" onAction="#createPost" text="Create Post" />
    </children>
 </AnchorPane>
