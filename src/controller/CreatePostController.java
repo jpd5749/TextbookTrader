@@ -23,6 +23,9 @@ public class CreatePostController {
     @FXML
     private TextField materialName;
     private TextField postTitle;
+    
+    @FXML
+    private TextField materialType;
 
     @FXML
     private TextField postCourse;
@@ -51,7 +54,7 @@ public class CreatePostController {
 
     @FXML
     void createPost(ActionEvent event) {
-
+        
     }
     
 }
