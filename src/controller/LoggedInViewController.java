@@ -159,8 +159,28 @@ public class LoggedInViewController {
     }
 
     @FXML
-    void createPost(ActionEvent event) {
-        System.out.println("Not Supported Yet.");
+    void createPost(ActionEvent event) throws IOException {
+        // fxml loader
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreatePostView.fxml"));
+
+        // load the ui elements
+        Parent createPostView = loader.load();
+
+        // load the scene
+        Scene loginViewScene = new Scene(createPostView);
+
+        //access the detailedControlled and call a method
+        CreatePostController createPostController = loader.getController();
+
+        // pass current scene to return
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        //createPostController.setPreviousScene(currentScene);
+
+        //This line gets the Stage information
+        Stage stage = (Stage) currentScene.getWindow();
+
+        stage.setScene(loginViewScene);
+        stage.show();
     }
 
     //Show details

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="756.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoggedInViewController">
+<AnchorPane id="AnchorPane" prefHeight="756.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoggedInViewController">
     <children>
         <Label fx:id="label" layoutX="458.0" layoutY="237.0" minHeight="16" minWidth="69" />
       <Text layoutX="17.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Posts" wrappingWidth="146.00000169873238">
@@ -21,7 +21,7 @@
          </font>
       </Text>
       <TextField fx:id="searchText" layoutX="17.0" layoutY="152.0" prefHeight="31.0" prefWidth="597.0" promptText="Enter Search Text" />
-      <TableView fx:id="postTable" layoutX="17.0" layoutY="207.0" prefHeight="498.0" prefWidth="725.0">
+      <TableView fx:id="postTable" layoutX="17.0" layoutY="207.0" prefHeight="423.0" prefWidth="725.0">
         <columns>
           <TableColumn id="textbookname" fx:id="materialName" prefWidth="275.0" text="Post Title" />
             <TableColumn fx:id="materialCondition" prefWidth="124.0" text="Condition" />
@@ -31,7 +31,7 @@
         </columns>
       </TableView>
       <Button layoutX="635.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickTitleSearch" prefHeight="31.0" prefWidth="100.0" text="Search" />
-      <Button layoutX="614.0" layoutY="713.0" mnemonicParsing="false" onAction="#showDetailsInPlace" prefHeight="36.0" prefWidth="128.0" text="View Selected Post" />
+      <Button layoutX="614.0" layoutY="646.0" mnemonicParsing="false" onAction="#showDetailsInPlace" prefHeight="36.0" prefWidth="128.0" text="View Selected Post" />
       <ImageView fitHeight="105.0" fitWidth="267.0" layoutX="245.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
@@ -41,7 +41,7 @@
          </image>
       </ImageView>
       <Button layoutX="635.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickLogout" prefHeight="44.0" prefWidth="100.0" text="Log Out" />
-      <Button layoutX="17.0" layoutY="713.0" mnemonicParsing="false" onAction="#createPost" prefHeight="36.0" prefWidth="128.0" text="Create Post" />
+      <Button layoutX="17.0" layoutY="646.0" mnemonicParsing="false" onAction="#createPost" prefHeight="36.0" prefWidth="128.0" text="Create Post" />
       <Text fx:id="welcomeText" layoutX="235.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back, User" wrappingWidth="288.0000016987324">
          <font>
             <Font size="25.0" />

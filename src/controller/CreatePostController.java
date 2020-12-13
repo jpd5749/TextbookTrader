@@ -7,13 +7,21 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.Posts;
 
 /**
  *
  * @author katie
  */
 public class CreatePostController {
+    
+    @FXML
+    private Button backToLoginButton;
     
     @FXML
     private TextField materialName;
@@ -32,12 +40,14 @@ public class CreatePostController {
 
     @FXML
     void backToLogin(ActionEvent event) {
-
+    
     }
+
 
     @FXML
     void createPost(ActionEvent event) {
 
     }
+    
     
 }

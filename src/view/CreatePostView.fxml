@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreatePostController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="37.0" prefWidth="55.0" text="Back" />
+      <Button fx:id="backToLoginButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="37.0" prefWidth="55.0" text="Back" />
       <Text layoutX="28.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Post" wrappingWidth="95.521484375">
          <font>
             <Font size="18.0" />
