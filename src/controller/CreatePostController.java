@@ -19,10 +19,7 @@ import model.Posts;
  * @author katie
  */
 public class CreatePostController {
-    
-    @FXML
-    private Button backToLoginButton;
-    
+
     @FXML
     private TextField materialName;
     private TextField postTitle;
@@ -33,17 +30,28 @@ public class CreatePostController {
     @FXML
     private TextField postCondition;
 
+    Scene previousScene;
 
     @FXML
-    void backToLogin(ActionEvent event) {
-    
-    }
+    void back(ActionEvent event) {
+        // option 1: get current stage -- from event
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+        //  option 2: get current stage -- from backbutton        
+        // Stage stage = (Stage)backButton.getScene().getWindow();
+        if (previousScene != null) {
+            stage.setScene(previousScene);
+        }
+    }
 
     @FXML
     void createPost(ActionEvent event) {
 
     }
     
-    
+        public void setPreviousScene(Scene scene) {
+        previousScene = scene;
+
+    }
+
 }
