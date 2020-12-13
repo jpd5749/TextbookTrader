@@ -34,14 +34,19 @@ public class CreatePostController {
 
     @FXML
     void back(ActionEvent event) {
-        // option 1: get current stage -- from event
+        //get current stage from event
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        //  option 2: get current stage -- from backbutton        
-        // Stage stage = (Stage)backButton.getScene().getWindow();
+        //get current stage from back button as long as peviousScene isn't null      
         if (previousScene != null) {
+            //call previousScene
             stage.setScene(previousScene);
         }
+    }
+    
+    public void setPreviousScene(Scene scene) {
+        previousScene = scene;
+
     }
 
     @FXML
@@ -49,9 +54,4 @@ public class CreatePostController {
 
     }
     
-        public void setPreviousScene(Scene scene) {
-        previousScene = scene;
-
-    }
-
 }
