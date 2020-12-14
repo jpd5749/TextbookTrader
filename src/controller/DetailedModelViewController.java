@@ -36,6 +36,9 @@ public class DetailedModelViewController {
 
     @FXML // fx:id="postUser"
     private Text postUser; // Value injected by FXMLLoader
+    
+    @FXML // fx:id="postEmail"
+    private Text postEmail; // Value injected by FXMLLoader
 
     @FXML
     private ImageView bookCoverImage;
@@ -72,6 +75,7 @@ public class DetailedModelViewController {
         postMaterial.setText(postModel.getType());
         postCourse.setText(postModel.getCourse());
         postUser.setText(postModel.getUsername());
+        postEmail.setText(postModel.getEmail());
 
         try {
             // path points to /resource/images/

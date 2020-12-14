@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Posts.findByCourse", query = "SELECT p FROM Posts p WHERE p.course = :course")
     , @NamedQuery(name = "Posts.findByUserid", query = "SELECT p FROM Posts p WHERE p.userid = :userid")
     , @NamedQuery(name = "Posts.findByUsername", query = "SELECT p FROM Posts p WHERE p.username = :username")
-    , @NamedQuery(name = "Posts.findNewestPost", query = "SELECT MAX(p.id) FROM Posts p")})
+    , @NamedQuery(name = "Posts.findNewestPost", query = "SELECT MAX(p.id) FROM Posts p")
+    , @NamedQuery(name = "Posts.findByEmail", query = "SELECT p FROM Posts p WHERE p.email = :email")})
 public class Posts implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +57,8 @@ public class Posts implements Serializable {
     private int userid;
     @Column(name = "USERNAME")
     private String username;
+    @Column(name = "EMAIL")
+    private String email;
 
     public Posts() {
     }
@@ -128,6 +131,14 @@ public class Posts implements Serializable {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -152,5 +163,5 @@ public class Posts implements Serializable {
     public String toString() {
         return "model.Posts[ id=" + id + " ]";
     }
-
+    
 }

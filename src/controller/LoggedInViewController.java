@@ -146,6 +146,7 @@ public class LoggedInViewController {
             query.setParameter("id", p.getUserid());
             Users u = (Users) query.getSingleResult();
             p.setUsername(u.getFirstname() + " " + u.getLastname());
+            p.setEmail(u.getEmail());
         }
 
         postData = FXCollections.observableArrayList();
