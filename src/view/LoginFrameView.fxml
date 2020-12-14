@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFrameViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFrameViewController">
    <children>
       <GridPane prefHeight="114.0" prefWidth="600.0">
         <columnConstraints>
@@ -36,7 +36,7 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Calibri" size="50.0" />
+                        <Font name="System Bold" size="30.0" />
                      </font>
                   </Text>
                   <GridPane GridPane.rowIndex="1">
@@ -50,7 +50,7 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="12.0" layoutY="-12.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="37.0" prefWidth="75.0" text="Back" />
+                              <Button layoutX="12.0" layoutY="-21.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="40.0" prefWidth="72.0" text="Back" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -70,12 +70,12 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" GridPane.halignment="RIGHT">
                <font>
-                  <Font size="24.0" />
+                  <Font name="System Italic" size="25.0" />
                </font>
             </Text>
             <Hyperlink fx:id="signupButton" onAction="#clickSignup" text="Create Account &gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Hyperlink>
          </children>
@@ -97,7 +97,7 @@
       </GridPane>
       <AnchorPane prefHeight="103.0" prefWidth="600.0">
          <children>
-            <Button fx:id="signinButton" layoutX="220.0" layoutY="29.0" mnemonicParsing="false" onAction="#clickSignin" prefHeight="45.0" prefWidth="161.0" text="Sign In">
+            <Button fx:id="signinButton" layoutX="228.0" layoutY="30.0" mnemonicParsing="false" onAction="#clickSignin" prefHeight="37.0" prefWidth="145.0" text="Sign In">
                <font>
                   <Font size="18.0" />
                </font>
