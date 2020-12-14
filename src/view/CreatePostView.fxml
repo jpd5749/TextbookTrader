@@ -8,16 +8,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreatePostController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="55.0" text="Back" />
-      <Text layoutX="230.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Post" wrappingWidth="196.521484375">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="62.0" text="Back" />
+      <Text layoutX="128.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Post" textAlignment="CENTER" wrappingWidth="196.521484375">
          <font>
-            <Font size="38.0" />
+            <Font size="25.0" />
          </font>
       </Text>
       <TextField fx:id="materialName" layoutX="28.0" layoutY="101.0" prefHeight="25.0" prefWidth="403.0" promptText="Post Title" />
-      <TextField fx:id="courseName" layoutX="28.0" layoutY="152.0" prefHeight="25.0" prefWidth="403.0" promptText="Course" />
-      <TextField fx:id="materialCondition" layoutX="28.0" layoutY="194.0" prefHeight="25.0" prefWidth="403.0" promptText="Condition" />
-      <Button layoutX="354.0" layoutY="282.0" mnemonicParsing="false" onAction="#createPost" text="Create Post" />
+      <TextField fx:id="courseName" layoutX="30.0" layoutY="146.0" prefHeight="25.0" prefWidth="403.0" promptText="Course" />
+      <TextField fx:id="materialCondition" layoutX="28.0" layoutY="191.0" prefHeight="25.0" prefWidth="403.0" promptText="Condition" />
+      <Button layoutX="335.0" layoutY="279.0" mnemonicParsing="false" onAction="#createPost" prefHeight="36.0" prefWidth="97.0" text="Create Post" />
       <TextField fx:id="materialType" layoutX="29.0" layoutY="239.0" prefHeight="25.0" prefWidth="403.0" promptText="Material Type" />
    </children>
 </AnchorPane>
