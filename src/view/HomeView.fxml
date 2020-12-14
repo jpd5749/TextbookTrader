@@ -19,7 +19,7 @@
         <Label fx:id="label" layoutX="458.0" layoutY="237.0" minHeight="16" minWidth="69" />
       <Text layoutX="23.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Posts" wrappingWidth="146.00000169873238">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Text>
       <TextField fx:id="searchText" layoutX="17.0" layoutY="152.0" prefHeight="31.0" prefWidth="597.0" promptText="Enter Search Text" />
