@@ -5,13 +5,10 @@
  */
 package controller;
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Users;
+import model.Posts;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,31 +16,32 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Jonas
+ * @author Joe
  */
-public class SignupFrameViewControllerTest {
-
-    public SignupFrameViewControllerTest() {
+public class CreatePostControllerTest {
+    
+    public CreatePostControllerTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
 
     /**
-     * Test of checkEmail method, of class SignupFrameViewController.
+     * Test of checkPost method, of class CreatePostController.
      */
     @Test
-    public void testCheckEmail() {
-        System.out.println("checkEmail");
-        Users newUser = new Users(999, "UnitTestEmail", "Test", "Unit", "testpassword");
-        String expResult = "UnitTestEmail";
-        String result = newUser.getEmail();
+    public void testCheckPost() {
+        System.out.println("checkPost");
+        Posts newPost = new Posts(9999, "titleTest", "conditionTest", "typeTest", 999);
+        String expResult = "titleTest";
+        String result = newPost.getTitle();
         assertEquals(expResult, result);
     }
 
+    
 }
