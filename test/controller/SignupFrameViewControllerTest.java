@@ -77,9 +77,9 @@ public class SignupFrameViewControllerTest {
     @Test
     public void testCheckEmail() {
         System.out.println("checkEmail");
-        Users newUser = new Users(999, "UnitTest@jtest.com", "Test", "Unit", "testpassword");
+        Users newUser = new Users(999, "UnitTestEmail", "Test", "Unit", "testpassword");
         SignupFrameViewController instance = new SignupFrameViewController();
-        String expResult = "UnitTest@jtest.com";
+        String expResult = "UnitTestEmail";
         String result = newUser.getEmail();
         assertEquals(expResult, result);
     }
