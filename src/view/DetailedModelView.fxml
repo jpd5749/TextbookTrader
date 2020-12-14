@@ -8,16 +8,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailedModelViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailedModelViewController">
    <children>
       <VBox layoutX="250.0" layoutY="90.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#clickBack" text="Back" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#clickBack" prefHeight="59.0" prefWidth="72.0" text="Back" />
             <BorderPane prefHeight="372.0" prefWidth="600.0">
                <top>
                   <Text fx:id="postTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Post Title" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="30.0" />
+                        <Font name="System Bold Italic" size="25.0" />
                      </font>
                   </Text>
                </top>
@@ -26,42 +26,42 @@
                      <children>
                         <Text layoutX="34.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Condition:">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                         <Text fx:id="postCondition" layoutX="158.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                         <Text layoutX="33.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                         <Text fx:id="postMaterial" layoutX="143.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                         <Text layoutX="33.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course:">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                         <Text fx:id="postCourse" layoutX="143.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                         <Text layoutX="33.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User:">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                         <Text fx:id="postUser" layoutX="143.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Text>
                      </children>
