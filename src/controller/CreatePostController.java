@@ -116,11 +116,13 @@ public class CreatePostController {
 
             // Create operation
             try {
-                // begin transaction
-                manager.getTransaction().begin();
+                
 
                 // sanity check
                 if (post.getTitle() != null && post.getType() != null && post.getCourse() != null && post.getCondition() != null) {
+
+                    // begin transaction
+                     manager.getTransaction().begin();
 
                     // create post
                     manager.persist(post);
