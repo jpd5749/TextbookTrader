@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Posts.findByType", query = "SELECT p FROM Posts p WHERE p.type = :type")
     , @NamedQuery(name = "Posts.findByCourse", query = "SELECT p FROM Posts p WHERE p.course = :course")
     , @NamedQuery(name = "Posts.findByUserid", query = "SELECT p FROM Posts p WHERE p.userid = :userid")
-    , @NamedQuery(name = "Posts.findByUsername", query = "SELECT p FROM Posts p WHERE p.username = :username")})
+    , @NamedQuery(name = "Posts.findByUsername", query = "SELECT p FROM Posts p WHERE p.username = :username")
+    , @NamedQuery(name = "Posts.findNewestPost", query = "SELECT MAX(p.id) FROM Posts p")})
 public class Posts implements Serializable {
 
     private static final long serialVersionUID = 1L;

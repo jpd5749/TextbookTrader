@@ -176,6 +176,8 @@ public class LoggedInViewController {
         Scene currentScene = ((Node) event.getSource()).getScene();
         createPostController.setPreviousScene(currentScene);
 
+        createPostController.initialize(currentUser);
+        
         //This line gets the Stage information
         Stage stage = (Stage) currentScene.getWindow();
 
