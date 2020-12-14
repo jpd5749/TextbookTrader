@@ -9,19 +9,21 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="756.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeViewController">
+<AnchorPane id="AnchorPane" prefHeight="719.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeViewController">
     <children>
+      <BorderPane layoutX="7.0" layoutY="7.0" opacity="0.1" prefHeight="705.0" prefWidth="744.0" style="-fx-background-color: gray;" />
         <Label fx:id="label" layoutX="458.0" layoutY="237.0" minHeight="16" minWidth="69" />
-      <Text layoutX="17.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Posts" wrappingWidth="146.00000169873238">
+      <Text layoutX="23.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Posts" wrappingWidth="146.00000169873238">
          <font>
-            <Font size="25.0" />
+            <Font size="20.0" />
          </font>
       </Text>
       <TextField fx:id="searchText" layoutX="17.0" layoutY="152.0" prefHeight="31.0" prefWidth="597.0" promptText="Enter Search Text" />
-      <TableView fx:id="postTable" layoutX="17.0" layoutY="207.0" prefHeight="498.0" prefWidth="725.0">
+      <TableView fx:id="postTable" layoutX="17.0" layoutY="207.0" prefHeight="422.0" prefWidth="725.0">
         <columns>
           <TableColumn id="textbookname" fx:id="materialName" prefWidth="275.0" text="Post Title" />
             <TableColumn fx:id="materialCondition" prefWidth="124.0" text="Condition" />
@@ -31,7 +33,7 @@
         </columns>
       </TableView>
       <Button layoutX="635.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickTitleSearch" prefHeight="31.0" prefWidth="100.0" text="Search" />
-      <Button layoutX="614.0" layoutY="713.0" mnemonicParsing="false" onAction="#showDetailsInPlace" prefHeight="36.0" prefWidth="128.0" text="View Selected Post" />
+      <Button layoutX="614.0" layoutY="655.0" mnemonicParsing="false" onAction="#showDetailsInPlace" prefHeight="36.0" prefWidth="128.0" text="View Selected Post" />
       <ImageView fitHeight="194.0" fitWidth="319.0" layoutX="191.0" layoutY="-33.0" pickOnBounds="true">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
