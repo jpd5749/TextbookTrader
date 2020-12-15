@@ -36,7 +36,7 @@ public class DetailedModelViewController {
 
     @FXML // fx:id="postUser"
     private Text postUser; // Value injected by FXMLLoader
-    
+
     @FXML // fx:id="postEmail"
     private Text postEmail; // Value injected by FXMLLoader
 
@@ -44,7 +44,7 @@ public class DetailedModelViewController {
     private ImageView bookCoverImage;
 
     //Taken and reformatted from Google doc
-    // going back to previous scene    
+    // going back to previous scene after the back button is clicked  
     @FXML
     void clickBack(ActionEvent event) {
         // option 1: get current stage -- from event
@@ -61,12 +61,15 @@ public class DetailedModelViewController {
     Posts selectedModel;
     Scene previousScene;
 
+    //gets the previous scene passed in and sets it to a local variable
     public void setPreviousScene(Scene scene) {
         previousScene = scene;
         backButton.setDisable(false);
 
     }
 
+    //gets called by the previous scene's button.
+    //Sets the text in the view based on the data from the post passed in, along with setting the correct image
     public void initData(Posts postModel) {
 
         selectedModel = postModel;

@@ -72,6 +72,7 @@ public class HomeViewController implements Initializable {
     private ObservableList<Posts> postData;
     // add the proper data to the observable list to be rendered in the table
 
+    //populates the view's table with the posts from the database
     public void setTableData(List<Posts> postList) {
 
         for (Posts p : postList) {
@@ -93,6 +94,7 @@ public class HomeViewController implements Initializable {
         postTable.refresh();
     }
 
+    //searches through the database with a wildcard search based on what's passed in
     public List<Posts> readByTitleContainingAdvanced(String postName) {
         Query query = manager.createNamedQuery("Posts.findByTitleAdvanced");
 
@@ -105,6 +107,7 @@ public class HomeViewController implements Initializable {
         return posts;
     }
 
+    //called when the "search" button is clicked. calls the previous method, passing in what's in the search textfield
     @FXML
     void clickTitleSearch(ActionEvent event) {
         // getting the name from input box
@@ -124,6 +127,7 @@ public class HomeViewController implements Initializable {
         }
     }
 
+    //brings up the LogInView after the "Log In/Sign Up" button is clicked
     @FXML
     void clickLogin(ActionEvent event) throws IOException {
 
@@ -150,7 +154,7 @@ public class HomeViewController implements Initializable {
         stage.show();
     }
 
-    //Show details
+    //Brings up the DetailedModelView, passing in the post that is highlighted from clicking on it in the view
     @FXML
     void showDetailsInPlace(ActionEvent event) throws IOException {
         //code taken and refurbished from Google doc
@@ -185,6 +189,8 @@ public class HomeViewController implements Initializable {
     // Database manager (code obtained from Google Doc)
     EntityManager manager;
 
+    //called when the view is created. mostly just sets up things for the table,
+    //along with calling the "readByTitleContainingAdvanced" method with an empty string to populate the table with every post by default
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // loading data from database

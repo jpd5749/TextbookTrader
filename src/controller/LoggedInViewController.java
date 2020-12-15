@@ -62,7 +62,7 @@ public class LoggedInViewController {
 
     @FXML // fx:id="materialUser"
     private TableColumn<Posts, Integer> materialUser; // Value injected by FXMLLoader
-    
+
     @FXML // fx:id="welcomeText"
     private Text welcomeText; // Value injected by FXMLLoader
 
@@ -75,6 +75,7 @@ public class LoggedInViewController {
     //tracks who's logged in
     int currentUser;
 
+    //simply returns to the HomeView, which lacks the options for when a user is logged in
     @FXML
     void clickLogout(ActionEvent event) throws IOException {
         //show a message to the user for feedback
@@ -107,6 +108,8 @@ public class LoggedInViewController {
 
     }
 
+    //same as HomeViewController, called when the "search" button is clicked. calls the readByTitleContainingAdvanced,
+    //passing in what's in the search textfield
     @FXML
     void clickTitleSearch(ActionEvent event) {
         // getting the name from input box
@@ -126,6 +129,7 @@ public class LoggedInViewController {
         }
     }
 
+    //searches through the database with a wildcard search based on what's passed in
     public List<Posts> readByTitleContainingAdvanced(String postName) {
         Query query = manager.createNamedQuery("Posts.findByTitleAdvanced");
 
@@ -138,6 +142,7 @@ public class LoggedInViewController {
         return posts;
     }
 
+    //populates the view's table with the posts from the database
     public void setTableData(List<Posts> postList) {
 
         for (Posts p : postList) {
@@ -159,6 +164,7 @@ public class LoggedInViewController {
         postTable.refresh();
     }
 
+    //switched the view to the CreatePostView. passes in the id of the currently logged in user
     @FXML
     void createPost(ActionEvent event) throws IOException {
         // fxml loader
@@ -178,7 +184,7 @@ public class LoggedInViewController {
         createPostController.setPreviousScene(currentScene);
 
         createPostController.initialize(currentUser);
-        
+
         //This line gets the Stage information
         Stage stage = (Stage) currentScene.getWindow();
 
@@ -186,7 +192,7 @@ public class LoggedInViewController {
         stage.show();
     }
 
-    //Show details
+    //Brings up the DetailedModelView, passing in the post that is highlighted from clicking on it in the view
     @FXML
     void showDetailsInPlace(ActionEvent event) throws IOException {
         //code taken and refurbished from Google doc
@@ -218,6 +224,7 @@ public class LoggedInViewController {
         stage.show();
     }
 
+    //called when the view is brought up, is passed in the id of the logged in user
     @FXML // This method is called by the FXMLLoader when initialization is complete
     public void initialize(int passedUser) {
         //set the current user to be the passed in user from the log in screen
@@ -240,16 +247,15 @@ public class LoggedInViewController {
         //show all the data in the table by default
         List<Posts> posts = readByTitleContainingAdvanced("");
         setTableData(posts);
-        
+
         //change the welcome text to welcome back the selected user
         //first, run a query to return the logged in user by searching their ID
         Query query = manager.createNamedQuery("Users.findById");
         query.setParameter("id", currentUser);
         Users u = (Users) query.getSingleResult();
-        
+
         //next, change the welcome text to include their name
         welcomeText.setText("Welcome back, " + u.getFirstname());
-
 
     }
 }

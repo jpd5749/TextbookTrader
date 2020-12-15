@@ -34,7 +34,7 @@ public class CreatePostController {
     @FXML
     private TextField materialName;
     private TextField postTitle;
-    
+
     @FXML
     private TextField materialType;
 
@@ -46,6 +46,7 @@ public class CreatePostController {
 
     Scene previousScene;
 
+    //activated after clicking the back button, returns to the LoggedInView
     //takes user back to previous scene
     @FXML
     void back(ActionEvent event) {
@@ -58,13 +59,15 @@ public class CreatePostController {
             stage.setScene(previousScene);
         }
     }
-    
+
+    //gets the previous scene passed in and sets a local variable to it
     //sets the previous scene
     public void setPreviousScene(Scene scene) {
         previousScene = scene;
 
     }
-    
+
+    //activated when the "create post" button is clicked, takes all the data from the text fields and creates a new Post from them
     @FXML
     //creates post instance with all of the properties entered by user
     void createPost(ActionEvent event) throws IOException {
@@ -109,6 +112,7 @@ public class CreatePostController {
         create(post, stage);
     }
 
+    //called in the previous method, takes the new post and puts in the database, and then returns to the previous view
     @FXML
     
     public void create(Posts post, Stage stage) {
@@ -119,12 +123,11 @@ public class CreatePostController {
 
             // Create operation
             try {
-                
                 // sanity check
                 if (post.getTitle() != null && post.getType() != null && post.getCourse() != null && post.getCondition() != null) {
 
                     // begin transaction
-                     manager.getTransaction().begin();
+                    manager.getTransaction().begin();
 
                     // create post
                     manager.persist(post);
@@ -166,7 +169,8 @@ public class CreatePostController {
         }
 
     }
-    
+
+    //checks to see if the passed in title matches any other posts to prevent duplicates
     //checks to see if the post already exists in the database
     public Posts checkPost(String title) {
         try {
@@ -184,11 +188,9 @@ public class CreatePostController {
 
     }
     
-   
     int currentUser;
     EntityManager manager;
-    
-    
+
     //initialize
     //called by the FXMLLoader when initialization is complete
     @FXML 
@@ -199,8 +201,6 @@ public class CreatePostController {
 
         // loading data from database
         manager = (EntityManager) Persistence.createEntityManagerFactory("TextbookTraderFXMLPU").createEntityManager();
-
-        
 
     }
 }

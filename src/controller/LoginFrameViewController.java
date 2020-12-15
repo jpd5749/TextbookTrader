@@ -42,10 +42,12 @@ public class LoginFrameViewController {
 
     Scene previousScene;
 
+    //sets the passed in scene to a local variable
     void setPreviousScene(Scene scene) {
         previousScene = scene;
     }
 
+    //opens the SignUpFrameView
     @FXML
     void clickSignup(ActionEvent event) throws IOException {
         // fxml loader
@@ -71,6 +73,8 @@ public class LoginFrameViewController {
         stage.show();
     }
 
+    //takes the data from the text fields, checks the database to see if the username and password is correct, and then opens the LoggedInView,
+    //passing in the id of the currently logged in user
     @FXML
     void clickSignin(ActionEvent event) throws IOException {
         String enteredEmail = emailField.getText();
@@ -127,6 +131,7 @@ public class LoginFrameViewController {
 
     EntityManager manager;
 
+    //uses a named query to find a specific user by their email
     public Users findByEmail(String email) {
         try {
             Query query = manager.createNamedQuery("Users.findByEmail");
@@ -143,6 +148,7 @@ public class LoginFrameViewController {
 
     }
 
+    //when the back button is clicked, returns to the HomeView
     @FXML
     void exitAction(ActionEvent event) {
 
@@ -150,6 +156,7 @@ public class LoginFrameViewController {
         stage.setScene(previousScene);
     }
 
+    //called when the view is first brought up
     @FXML
     void initialize() {
         manager = (EntityManager) Persistence.createEntityManagerFactory("TextbookTraderFXMLPU").createEntityManager();

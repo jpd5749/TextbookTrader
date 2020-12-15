@@ -48,31 +48,7 @@ public class SignupFrameViewController {
 
     Scene previousScene;
 
-    @FXML
-    void clickSignin(ActionEvent event) throws IOException {
-        // fxml loader
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginFrameView.fxml"));
-
-        // load the ui elements
-        Parent loginFrameView = loader.load();
-
-        // load the scene
-        Scene loginViewScene = new Scene(loginFrameView);
-
-        //access the detailedControlled and call a method
-        LoginFrameViewController loginController = loader.getController();
-
-        // pass current scene to return
-        Scene currentScene = ((Node) event.getSource()).getScene();
-        //loginController.setPreviousScene(currentScene);
-
-        //This line gets the Stage information
-        Stage stage = (Stage) currentScene.getWindow();
-
-        stage.setScene(loginViewScene);
-        stage.show();
-    }
-
+    //takes the data from the text fields and uses it to create a new user variable. includes sanity checking
     @FXML
     void clickCreate(ActionEvent event) throws IOException {
 
@@ -115,6 +91,7 @@ public class SignupFrameViewController {
         create(user, stage);
     }
 
+    //takes in the passed in user, adds it to the database, and then opens up the LoggedInView, passing in the ID of the new user
     @FXML
     public void create(Users user, Stage stage) {
 
@@ -171,6 +148,7 @@ public class SignupFrameViewController {
 
     }
 
+    //uses a named query to search for a specific user by email
     public Users checkEmail(String email) {
         try {
             Query query = manager.createNamedQuery("Users.findByEmail");
@@ -187,6 +165,7 @@ public class SignupFrameViewController {
 
     }
 
+    //returns to the previous scene, HomeView
     @FXML
     void exitAction(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -196,6 +175,7 @@ public class SignupFrameViewController {
     // Database manager
     EntityManager manager;
 
+    //is called when the view is first brought up
     @FXML
     void initialize() {
 
@@ -211,6 +191,7 @@ public class SignupFrameViewController {
 
     }
 
+    //takes the passed in scene and sets it to a local variable
     void setPreviousScene(Scene scene) {
         previousScene = scene;
     }
