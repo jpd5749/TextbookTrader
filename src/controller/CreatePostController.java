@@ -46,6 +46,7 @@ public class CreatePostController {
 
     Scene previousScene;
 
+    //takes user back to previous scene
     @FXML
     void back(ActionEvent event) {
         //get current stage from event
@@ -58,27 +59,29 @@ public class CreatePostController {
         }
     }
     
+    //sets the previous scene
     public void setPreviousScene(Scene scene) {
         previousScene = scene;
 
     }
     
     @FXML
+    //creates post instance with all of the properties entered by user
     void createPost(ActionEvent event) throws IOException {
 
-        // read input from text fields
+        //read input from text fields
         int id;
         String name = materialName.getText();
         String type = materialType.getText();
         String course = postCourse.getText();
         String condition = postCondition.getText();
 
-        // call named query to determine the highest post id in the table
+        //call named query to determine the highest post id in the table
         Query query = manager.createNamedQuery("Posts.findNewestPost");
         // set id to be the highest post id + 1
         id = (int) query.getSingleResult() + 1;
 
-        // create a post instance
+        //create a post instance
         Posts post = new Posts();
 
         if (name.isEmpty() || type.isEmpty() || course.isEmpty() || condition.isEmpty()) {
@@ -89,7 +92,7 @@ public class CreatePostController {
             alert.setContentText("One or more fields have been left empty");
             alert.showAndWait();
         } else {
-            // set properties
+           //set properties
             post.setId(id);
             post.setUserid(currentUser);
             post.setTitle(name);
@@ -98,17 +101,17 @@ public class CreatePostController {
             post.setCondition(condition);
         }
 
-        // pass current scene to return
+        //pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
         Stage stage = (Stage) currentScene.getWindow();
 
-        // save this account to database by calling Create operation  
+        //save this account to database by calling Create operation  
         create(post, stage);
     }
 
     @FXML
+    
     public void create(Posts post, Stage stage) {
-
         //Check if the post already exists
         Posts existingAccount = checkPost(post.getTitle());
 
@@ -117,7 +120,6 @@ public class CreatePostController {
             // Create operation
             try {
                 
-
                 // sanity check
                 if (post.getTitle() != null && post.getType() != null && post.getCourse() != null && post.getCondition() != null) {
 
@@ -165,6 +167,7 @@ public class CreatePostController {
 
     }
     
+    //checks to see if the post already exists in the database
     public Posts checkPost(String title) {
         try {
             Query query = manager.createNamedQuery("Posts.findByTitle");
@@ -181,36 +184,14 @@ public class CreatePostController {
 
     }
     
-    /*
-    @FXML
-    void createPost(ActionEvent event) throws IOException {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoggedInView.fxml"));
-
-                
-                Parent loggedInView = loader.load();
-
-                
-                Scene loggedInViewScene = new Scene(loggedInView);
-
-                LoggedInViewController loggedInControlled = loader.getController();
-
-                loggedInControlled.initialize(currentUser);
-
-
-                Scene currentScene = ((Node) event.getSource()).getScene();
-                Stage stage = (Stage) currentScene.getWindow();
-
-                stage.setScene(loggedInViewScene);
-                stage.show();
-        
-    }
-    */
+   
     int currentUser;
     EntityManager manager;
     
     
     //initialize
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    //called by the FXMLLoader when initialization is complete
+    @FXML 
     public void initialize(int passedUser) {
         //set the current user to be the passed in user from the log in screen
         currentUser = passedUser;
