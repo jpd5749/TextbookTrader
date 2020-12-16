@@ -1,0 +1,17 @@
+Our project; Textbook Trader, is an app for students to be able to buy and sell secondhand school materials such as textbooks, calculators, and iClickers. Users are able to create an account (which requires their name, email, and a password) and log in using that account. They are able to see all of the current product listings and get more information (including a picture) when viewing each post. In addition to viewing the posts, users can create their own post, which requires the relevant information about the product. Upon clicking “create” the user’s ID is attached to the post, and is then available for all other users to view.
+Some challenges we faced while working on this project were getting our database tables properly set up and shared. We had to change the model classes a few times, after realizing the current iteration didn’t suit our needs. To share the database, we used Google Drive and had to reconnect the project to the new database.
+With the limited timeframe, we unfortunately had to cut a few of our proposed features, such as the favorite list and block list. However, the main functionality of the app is still present.
+
+User Manual:
+
+When starting TextbookTrader, you will be presented with the home screen. From here you have multiple options. By default, the table shows every single post, but if you would like to search for a specific post, you can enter it into the search field and click the “Search” button. If you would like to view a post, simply click on the “View Selected Post” button in the bottom-right corner. Doing so will show the post’s details in a seperate screen.
+
+To get back to the previous screen, click on the “Back” button. If you would like to create your own posts, it is possible to create your own account to do so. At the Home screen, simply click the “Log In/Sign Up” button in the top-right corner. You will first be taken to th home screen. If you have already created an account, you can enter your email address and password and click the “Sign In” button to access your account. If you have not, however, click the text that says “Create Account >”.
+
+From here you can enter your information to create an account. If you would like to go back to the previous screen, you can click the “Back” button in the top-right corner. After you have filled out your information, you will be taken back to the Home screen, but it will look slightly different than before. You now have two new options. First, if you would like to log out of your account, you can click the “Log Out” button in the top-right corner. If you would like to make a new post advertising course materials you are selling, click the “Create Post” button in the bottom-left corner.
+
+From here you can now enter the information regarding your listing into the appropriate text boxes. If you would like to go back to the previous screen without posting anything, click the “Back” button in the top-right corner. Once you are done entering your information, you can create your post by clicking the “Create Post” button in the bottom-right corner. You do not need to enter your email or first and last name, as they are automatically taken from your account information. (Note: the uploading of images is currently unsupported.)
+
+Once that is done, you will be brought back to the Menu screen, this time with your new post.
+
+Congratulations! You now know how to use TextbookTrader.
