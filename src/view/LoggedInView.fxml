@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoggedInViewController">
+<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoggedInViewController">
     <children>
       <BorderPane layoutX="7.0" layoutY="8.0" opacity="0.1" prefHeight="694.0" prefWidth="744.0" style="-fx-background-color: gray;" />
         <Label fx:id="label" layoutX="458.0" layoutY="237.0" minHeight="16" minWidth="69" />
@@ -22,7 +22,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="searchText" layoutX="17.0" layoutY="152.0" prefHeight="31.0" prefWidth="597.0" promptText="Enter Search Text" />
+      <TextField fx:id="searchText" layoutX="17.0" layoutY="152.0" prefHeight="31.0" prefWidth="491.0" promptText="Enter Search Text" />
       <TableView fx:id="postTable" layoutX="17.0" layoutY="207.0" prefHeight="423.0" prefWidth="725.0">
         <columns>
           <TableColumn id="textbookname" fx:id="materialName" prefWidth="275.0" text="Post Title" />
@@ -32,7 +32,7 @@
             <TableColumn fx:id="materialUser" prefWidth="124.0" text="User" />
         </columns>
       </TableView>
-      <Button layoutX="635.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickTitleSearch" prefHeight="31.0" prefWidth="100.0" text="Search" />
+      <Button layoutX="635.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickClassSearch" prefHeight="31.0" prefWidth="100.0" text="Search by Class" />
       <Button layoutX="614.0" layoutY="646.0" mnemonicParsing="false" onAction="#showDetailsInPlace" prefHeight="36.0" prefWidth="128.0" text="View Selected Post" />
       <Button layoutX="635.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickLogout" prefHeight="44.0" prefWidth="100.0" text="Log Out" />
       <Button layoutX="17.0" layoutY="646.0" mnemonicParsing="false" onAction="#createPost" prefHeight="36.0" prefWidth="128.0" text="Create Post" />
@@ -49,5 +49,6 @@
             <Image url="@Logo.png" />
          </image>
       </ImageView>
+      <Button layoutX="522.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickTitleSearch" prefHeight="31.0" prefWidth="100.0" text="Search by Title" />
     </children>
 </AnchorPane>

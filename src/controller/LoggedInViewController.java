@@ -142,6 +142,39 @@ public class LoggedInViewController {
         return posts;
     }
 
+    //called when the "search" button is clicked. calls the previous method, passing in what's in the search textfield
+    @FXML
+    void clickClassSearch(ActionEvent event) {
+        // getting the name from input box
+        String className = searchText.getText();
+        // calling a db read operaiton, readByName
+        List<Posts> posts = readByClassContainingAdvanced(className);
+        if (posts == null || posts.isEmpty()) {
+            // show an alert to inform user
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog Box");// line 2
+            alert.setHeaderText("The following error occured:");// line 3
+            alert.setContentText("No posts matching that query were found");// line 4
+            alert.showAndWait(); // line 5
+        } else {
+            // setting table data
+            setTableData(posts);
+        }
+    }
+
+    //searches through the database with a wildcard search based on what's passed in
+    public List<Posts> readByClassContainingAdvanced(String postName) {
+        Query query = manager.createNamedQuery("Posts.findByClassAdvanced");
+
+        // setting query parameter
+        query.setParameter("course", postName);
+
+        // execute query
+        List<Posts> posts = query.getResultList();
+
+        return posts;
+    }
+
     //populates the view's table with the posts from the database
     public void setTableData(List<Posts> postList) {
 
